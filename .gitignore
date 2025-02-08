@@ -1,3 +1,8 @@
+# dev
+src/assets/tiles
+coverage/
+.env
+
 # Logs
 logs
 *.log
@@ -22,3 +27,4 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+/.run/dev.run.xml

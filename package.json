@@ -1,29 +1,57 @@
 {
-  "name": "vanilla",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
-  },
-  "devDependencies": {
-    "@eslint/js": "^9.19.0",
-    "@types/react": "^19.0.8",
-    "@types/react-dom": "^19.0.3",
-    "@vitejs/plugin-react-swc": "^3.5.0",
-    "eslint": "^9.19.0",
-    "eslint-plugin-react-hooks": "^5.0.0",
-    "eslint-plugin-react-refresh": "^0.4.18",
-    "globals": "^15.14.0",
-    "typescript": "~5.7.2",
-    "typescript-eslint": "^8.22.0",
-    "vite": "^6.1.0"
-  }
+    "name": "@pixelaw/vanilla",
+    "private": true,
+    "version": "0.5.3",
+    "type": "module",
+    "license": "MIT",
+    "source": "src/index.ts",
+    "main": "dist/index.js",
+    "author": "thiscaspar",
+    "scripts": {
+        "experiments": "tsx  src/scripts/experiments.ts",
+        "dev": "vite",
+        "build-prod": "tsc && vite build",
+        "build": "vite build",
+        "preview": "vite preview",
+        "test": "vitest",
+        "lint": "biome lint .",
+        "format": "biome format --write .",
+        "coverage": "vitest run --coverage",
+        "upgrade_dojo": "yarn add @dojoengine/core @dojoengine/create-burner @dojoengine/react @dojoengine/recs @dojoengine/state @dojoengine/torii-client @dojoengine/utils @dojoengine/sdk @cartridge/connector",
+        "check": "biome check --apply ."
+    },
+    "dependencies": {
+        "@pixelaw/core": "workspace:*",
+        "@pixelaw/core-dojo": "workspace:*",
+        "@pixelaw/core-mud": "workspace:*",
+        "@pixelaw/react-dojo": "workspace:*",
+        "@pixelaw/react": "workspace:*",
+        "@react-hook/resize-observer": "^2.0.2",
+        "autoprefixer": "^10.4.20",
+        "dotenv": "^16.4.7",
+        "mitt": "^3.0.1",
+        "postcss": "^8.4.49",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-router-dom": "^7.1.0",
+        "tailwindcss": "^3.4.17",
+        "tailwindcss-animate": "^1.0.7",
+        "zustand": "^5.0.2"
+    },
+    "devDependencies": {
+        "@types/node": "^22.13.0",
+        "@biomejs/biome": "1.9.4",
+        "@types/react": "^18.2.0",
+        "@types/react-dom": "^18.2.0",
+        "@types/upng-js": "^2.1.5",
+        "@vitejs/plugin-react": "^4.3.4",
+        "globals": "^15.14.0",
+        "typescript": "^5.7.2",
+        "vite": "^6.0.5",
+        "vite-envs": "^4.4.10",
+        "vite-plugin-mkcert": "^1.17.6",
+        "vite-plugin-top-level-await": "^1.4.4",
+        "vite-plugin-wasm": "^3.4.1",
+        "vitest": "^2.1.8"
+    }
 }
