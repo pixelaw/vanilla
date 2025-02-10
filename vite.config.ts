@@ -13,8 +13,27 @@ export default defineConfig({
         topLevelAwait(),
         viteEnvs({
             declarationFile: ".env.example"
-        })
-
+        }),
+        {
+            name: 'custom-logger',
+            configureServer(server) {
+                server.middlewares.use('/logs', (req, res, next) => {
+                    if (req.method === 'POST') {
+                        let body = '';
+                        req.on('data', chunk => {
+                            body += chunk.toString();
+                        });
+                        req.on('end', () => {
+                            console.log(body); // Handle the log data as needed
+                            res.statusCode = 200;
+                            res.end();
+                        });
+                    } else {
+                        next();
+                    }
+                });
+            }
+        },
     ],
     resolve: {
         alias: {
@@ -36,7 +55,30 @@ export default defineConfig({
 
         }
     },
+
     server: {
+        proxy: {
+            '/api': {
+                target: 'http://localhost:3000',
+                changeOrigin: true,
+                rewrite: (path) => path.replace(/^\/api/, ''),
+                ws: true
+            },
+            '/torii': {
+                target: 'http://localhost:8080',
+                changeOrigin: true,
+                rewrite: (path) => path.replace(/^\/torii/, ''),
+                // ws: true
+            },
+            '/rpc': {
+                target: 'http://localhost:5050',
+                changeOrigin: true,
+                rewrite: (path) => path.replace(/^\/rpc/, ''),
+                // ws: true
+            }
+        },
+        allowedHosts: true, //["px.tunnel.devsat.work"],
+        strictPort: true,
         fs: {
             allow: [
                 path.resolve(__dirname, 'pixelaw.js/packages/core-dojo/dist'),

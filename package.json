@@ -24,8 +24,8 @@
         "@pixelaw/core": "workspace:*",
         "@pixelaw/core-dojo": "workspace:*",
         "@pixelaw/core-mud": "workspace:*",
-        "@pixelaw/react-dojo": "workspace:*",
         "@pixelaw/react": "workspace:*",
+        "@pixelaw/react-dojo": "workspace:*",
         "@react-hook/resize-observer": "^2.0.2",
         "autoprefixer": "^10.4.20",
         "dotenv": "^16.4.7",
@@ -39,8 +39,8 @@
         "zustand": "^5.0.2"
     },
     "devDependencies": {
-        "@types/node": "^22.13.0",
         "@biomejs/biome": "1.9.4",
+        "@types/node": "^22.13.0",
         "@types/react": "^18.2.0",
         "@types/react-dom": "^18.2.0",
         "@types/upng-js": "^2.1.5",

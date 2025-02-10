@@ -42,10 +42,10 @@ type PixelawConfig = {
 const DojoConfig: DojoEngineType = {
   type: "Dojo",
   config: {
-    toriiUrl: "http://127.0.0.1:8080",
-    serverUrl: "http://127.0.0.1:3000",
-    rpcUrl: "http://127.0.0.1:5050",
-    relayUrl: "http://127.0.0.1:8080",
+    toriiUrl: "/torii",
+    serverUrl: "/api",
+    rpcUrl: "/rpc",
+    relayUrl: "/torii",
     world: "0x1869796b1c25976fc5f4b08ca84995945aa68a8850d3739c96e4c9994456ed7",
     wallets: {
       burner: {

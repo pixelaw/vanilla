@@ -22,10 +22,10 @@
     "engine": "dojoengine",
     "description": "Local populated world",
     "config": {
-      "serverUrl": "http://127.0.0.1:3000",
-      "rpcUrl": "http://127.0.0.1:5050",
-      "toriiUrl": "http://127.0.0.1:8080",
-      "relayUrl": "http://127.0.0.1:8080",
+      "serverUrl": "https://px.tunnel.devsat.work/api",
+      "rpcUrl": "https://px.tunnel.devsat.work/rpc",
+      "toriiUrl": "https://px.tunnel.devsat.work/torii",
+      "relayUrl": "https://px.tunnel.devsat.work/torii",
       "feeTokenAddress": "0x49d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7",
       "wallets": {
         "burner": {
