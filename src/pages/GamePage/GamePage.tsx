@@ -2,7 +2,7 @@ import Apps from "@/components/GamePage/Apps/Apps.tsx"
 import SimpleColorPicker from "@/components/GamePage/ColorPicker/SimpleColorPicker.tsx"
 
 import {clearDomChildren, DEFAULT_WORLD, hexRGBtoNumber} from "@/utils.ts"
-import useSettingStore from "@/hooks/SettingStore.ts"
+// import useSettingStore from "@/hooks/SettingStore.ts"
 import { type Coordinate, MAX_DIMENSION } from "@pixelaw/core"
 import { usePixelawProvider } from "@pixelaw/react"
 import { useEffect, useMemo, useRef } from "react"
@@ -70,7 +70,7 @@ const GamePage: React.FC = () => {
         clickedCell,
         setClickedCell,
     } = useViewState()
-    const { setWorld, world } = useSettingStore()
+    // const { setWorld, world } = useSettingStore()
     const initialLoad = useRef(true)
 
     const zoombasedAdjustment = useMemo(() => {
@@ -86,15 +86,15 @@ const GamePage: React.FC = () => {
             const centerInQuery = queryParams.get("center")?.split(",").map(Number) as Coordinate
             const zoomInQuery = Number(queryParams.get("zoom"))
             const colorInQuery = queryParams.get("color")
-            const worldInQuery = queryParams.get("world")
+            // const worldInQuery = queryParams.get("world")
 
             if (appInQuery && appInQuery.length > 0) setSelectedApp(appInQuery)
             if (centerInQuery) setCenter(centerInQuery)
             if (zoomInQuery) setZoom(zoomInQuery)
             if (colorInQuery) setColor(colorInQuery)
-            if (worldInQuery) setWorld(worldInQuery)
+            // if (worldInQuery) setWorld(worldInQuery)
         }
-    }, [setSelectedApp, setCenter, setZoom, setColor, location.search, setWorld])
+    }, [setSelectedApp, setCenter, setZoom, setColor, location.search])
 
     // Updating the URL
     useEffect(() => {
@@ -104,7 +104,7 @@ const GamePage: React.FC = () => {
             queryParams.set("center", `${center[0]},${center[1]}`)
             queryParams.set("zoom", zoom.toString())
             queryParams.set("color", color)
-            queryParams.set("world", world)
+            // queryParams.set("world", world)
             const newSearch = `?${queryParams.toString()}`
 
             if (window.location.search !== newSearch) {
@@ -114,7 +114,7 @@ const GamePage: React.FC = () => {
         updateURL()
 
         pixelawCore.setColor(hexRGBtoNumber(color))
-    }, [selectedApp, center, zoom, color, world])
+    }, [selectedApp, center, zoom, color])
 
     // ^ TODO move Above to Core
 

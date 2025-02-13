@@ -5,15 +5,12 @@ import "@/index.css"
 import { PixelawProvider } from "@pixelaw/react"
 import { BrowserRouter } from "react-router-dom"
 
-import worldsConfig from "@/config/worlds.json"
+import worldsRegistry from "@/config/worlds.json"
 
 import {DojoEngine} from "@pixelaw/core-dojo"
 import {MudEngine} from "@pixelaw/core-mud"
 import {DEFAULT_WORLD} from "@/utils.ts";
 
-
-
-const worldConfig = worldsConfig[DEFAULT_WORLD]
 
 const rootElement = document.getElementById("root")
 
@@ -22,7 +19,7 @@ const engines = [DojoEngine, MudEngine]
 if (rootElement) {
     ReactDOM.createRoot(rootElement).render(
         <React.StrictMode>
-            <PixelawProvider worldConfig={worldConfig} engines={engines}>
+            <PixelawProvider worldsRegistry={worldsRegistry} world={DEFAULT_WORLD} engines={engines}>
                     <BrowserRouter>
                         <Main />
                     </BrowserRouter>
