@@ -4,33 +4,19 @@ import ReactDOM from "react-dom/client"
 import "@/index.css"
 import { PixelawProvider } from "@pixelaw/react"
 import { BrowserRouter } from "react-router-dom"
-
-import worldsRegistry from "@/config/worlds.json"
-
 import {DojoEngine} from "@pixelaw/core-dojo"
 import {MudEngine} from "@pixelaw/core-mud"
-import {DEFAULT_WORLD} from "@/utils.ts";
+import {DEFAULT_WORLD, getCoreDefaultsFromUrl} from "@/utils.ts";
+
+// TODO for now hardcoded, but planning to retrieve from github URL using env WORLDS_REGISTRY_URL
+import worldsRegistry from "@/config/worlds.json"
 
 
 const rootElement = document.getElementById("root")
 
 const engines = [DojoEngine, MudEngine]
 
-
-// Parse query string for CoreDefaults
-const queryParams = new URLSearchParams(window.location.search)
-const app = queryParams.get("app") || ""
-const color = parseInt(queryParams.get("color") || "0", 10)
-const center = queryParams.get("center")?.split(",").map(Number) as [number, number] | undefined
-const zoom = parseInt(queryParams.get("zoom") || "0", 10)
-
-// Validate and construct CoreDefaults
-const coreDefaults = {
-    app,
-    color: isNaN(color) ? 0 : color,
-    center: center && center.length === 2 ? center : [0, 0],
-    zoom: isNaN(zoom) ? 0 : zoom,
-}
+const coreDefaults = getCoreDefaultsFromUrl()
 
 
 if (rootElement) {
