@@ -6,7 +6,12 @@ export const clearDomChildren = (element: HTMLElement) => {
     }
 };
 export const hexRGBtoNumber = (color: string) => {
-    return Number.parseInt(`0x${color.replace("#", "")}FF`, 16)
+    return Number.parseInt(`${color.replace("#", "")}FF`, 16)
 }
+
+export const numberToHexRGB = (num: number) => {
+    const hex = (num >>> 8).toString(16).padStart(6, '0');
+    return `#${hex}`.toUpperCase();
+};
 
 
