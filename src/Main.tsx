@@ -9,7 +9,6 @@ import { Route, Routes } from "react-router-dom"
 import styles from "./Main.module.css"
 
 function Main() {
-
     const { coreStatus } = usePixelawProvider()
 
     if (["uninitialized", "initializing", "loadConfig"].includes(coreStatus)) {
