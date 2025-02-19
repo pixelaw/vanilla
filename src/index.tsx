@@ -19,6 +19,7 @@ const engines = [DojoEngine, MudEngine]
 
 const coreDefaults = getCoreDefaultsFromUrl()
 
+// TODO this needs improvement, PixelawProvider chooses Engine, but we still need ChainProvider chosen here based on the active engine..
 const ChainProvider = StarknetChainProvider
 
 console.log("root")
