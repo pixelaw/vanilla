@@ -5,7 +5,7 @@ import { type Coordinate } from "@pixelaw/core"
 import { usePixelawProvider } from "@pixelaw/react"
 import { useEffect, useMemo, useRef } from "react"
 import styles from "./GamePage.module.css"
-import dialogStyles from "./dialog.css"
+// import dialogStyles from "./dialog.css"
 
 
 
@@ -29,7 +29,7 @@ const GamePage: React.FC = () => {
             queryParams.set("center", `${center[0]},${center[1]}`)
             queryParams.set("zoom", zoom.toString())
             queryParams.set("color", color.toString())
-            queryParams.set("world", world)
+            queryParams.set("world", world!)
             const newSearch = `?${queryParams.toString()}`
 
             if (window.location.search !== newSearch) {
@@ -44,11 +44,10 @@ const GamePage: React.FC = () => {
     // Handle viewport events
     useEffect(() => {
 
-        const handleCellClick = (cell?: Coordinate) => {
+        const handleCellClick = async (cell: Coordinate) => {
             if (!dialogContainerRef || !dialogContainerRef.current) return
 
-            // setClickedCell(cell)
-            const interaction = pixelawCore.handleInteraction(cell)
+            const interaction = await pixelawCore.handleInteraction(cell)
 
             // Clear existing children (dialogs)
             clearDomChildren(dialogContainerRef.current)
