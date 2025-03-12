@@ -65,9 +65,6 @@ const GamePage: React.FC = () => {
         const handleQueueItem = (item: QueueItem) => {
             pixelawCore
                 .executeQueueItem(item)
-                .then((ret) => {
-                    console.log("handleQueueItem done", ret)
-                })
                 .catch(console.error)
         }
 
