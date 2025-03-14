@@ -1,14 +1,15 @@
 // switchDependencies.js
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
 
 const useSubmodules = process.argv.includes('--submodule');
 
-const packageJsonPath = path.join(__dirname, 'package.json');
-const workspaceYamlEnabled = path.join(__dirname, 'pnpm-workspace.disabled.yaml');
-const workspaceYamlDisabled = path.join(__dirname, 'pnpm-workspace.yaml');
-const packageJson = require(packageJsonPath);
+const packageJsonPath = path.join(process.cwd(), 'package.json');
+const workspaceYamlDisabled = path.join(process.cwd(), 'pnpm-workspace.disabled.yaml');
+const workspaceYamlEnabled = path.join(process.cwd(), 'pnpm-workspace.yaml');
 
+// Use dynamic import for JSON files
+const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'));
 
 const submodulePaths = {
     "@pixelaw/core": "workspace:*",
@@ -33,7 +34,6 @@ if (useSubmodules) {
     packageJson.dependencies["@pixelaw/core-mud"] = "^0.6.7";
     packageJson.dependencies["@pixelaw/react"] = "^0.6.7";
     packageJson.dependencies["@pixelaw/react-dojo"] = "^0.6.7";
-
 
     if (fs.existsSync(workspaceYamlEnabled)) {
         fs.renameSync(workspaceYamlEnabled, workspaceYamlDisabled);
