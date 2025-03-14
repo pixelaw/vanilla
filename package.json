@@ -59,5 +59,10 @@
     "vite-plugin-top-level-await": "^1.4.4",
     "vite-plugin-wasm": "^3.4.1",
     "vitest": "^2.1.8"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "@dojoengine/torii-wasm@1.2.5": "patches/@dojoengine__torii-wasm@1.2.5.patch"
+    }
   }
 }
