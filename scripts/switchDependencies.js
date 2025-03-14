@@ -19,6 +19,12 @@ const submodulePaths = {
     "@pixelaw/react-dojo": "workspace:*",
 };
 
+function newWorkspaceFile (filename){
+    // Create the disabled YAML file if it doesn't exist
+    const yamlContent = `packages:\n  - "."\n  - "pixelaw.js/packages/*"\n`;
+    fs.writeFileSync(filename, yamlContent);
+}
+
 if (useSubmodules) {
     Object.keys(submodulePaths).forEach(dep => {
         packageJson.dependencies[dep] = submodulePaths[dep];
@@ -26,6 +32,8 @@ if (useSubmodules) {
     // Rename to enable submodules
     if (fs.existsSync(workspaceYamlDisabled)) {
         fs.renameSync(workspaceYamlDisabled, workspaceYamlEnabled);
+    }else{
+        newWorkspaceFile(workspaceYamlEnabled)
     }
 } else {
     // Revert to regular versions
@@ -37,6 +45,8 @@ if (useSubmodules) {
 
     if (fs.existsSync(workspaceYamlEnabled)) {
         fs.renameSync(workspaceYamlEnabled, workspaceYamlDisabled);
+    } else{
+        newWorkspaceFile(workspaceYamlDisabled)
     }
 }
 
