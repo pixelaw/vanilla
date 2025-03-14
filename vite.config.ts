@@ -7,6 +7,10 @@ import wasm from "vite-plugin-wasm";
 
 export default defineConfig({
     logLevel: "info",
+    optimizeDeps: {
+        // exclude: ['@pixelaw/core-dojo']
+        include: ['@pixelaw/core-dojo/DojoSqlPixelStore.webworker']
+    },
     plugins: [
         react(),
         wasm(),
@@ -37,11 +41,11 @@ export default defineConfig({
     ],
     resolve: {
         alias: {
-            "@pixelaw/core": path.resolve(__dirname, 'pixelaw.js/packages/core/src'),
-            "@pixelaw/core-dojo": path.resolve(__dirname, "pixelaw.js/packages/core-dojo/src"),
-            "@pixelaw/core-mud": path.resolve(__dirname, "pixelaw.js/packages/core-mud/src"),
-            "@pixelaw/react": path.resolve(__dirname, "pixelaw.js/packages/react/src"),
-            "@pixelaw/react-dojo": path.resolve(__dirname, "pixelaw.js/packages/react-dojo/src"),
+            // "@pixelaw/core": path.resolve(__dirname, 'pixelaw.js/packages/core/src'),
+            // "@pixelaw/core-dojo": path.resolve(__dirname, "pixelaw.js/packages/core-dojo/src"),
+            // "@pixelaw/core-mud": path.resolve(__dirname, "pixelaw.js/packages/core-mud/src"),
+            // "@pixelaw/react": path.resolve(__dirname, "pixelaw.js/packages/react/src"),
+            // "@pixelaw/react-dojo": path.resolve(__dirname, "pixelaw.js/packages/react-dojo/src"),
             '@': path.resolve(__dirname, './src'),
         },
     },
@@ -52,8 +56,14 @@ export default defineConfig({
             input: {
                 main: path.resolve(__dirname, 'index.html'),
             },
+        },
+        // minify: 'terser',
+        // terserOptions: {
+        //     mangle: {
+        //         reserved: ['DojoEngine'],
+        //     },
+        // },
 
-        }
     },
 
     server: {
@@ -86,6 +96,7 @@ export default defineConfig({
                 path.resolve(__dirname, './'),
             ],
         },
+
     },
 });
 
