@@ -19,18 +19,14 @@ const engines = {"dojoengine": DojoEngine, "mudengine": MudEngine}
 
 const coreDefaults = getCoreDefaultsFromUrl()
 
-// TODO this needs improvement, PixelawProvider chooses Engine, but we still need ChainProvider chosen here based on the active engine..
-const ChainProvider = StarknetChainProvider
-
-console.log("root")
 if (rootElement) {
     ReactDOM.createRoot(rootElement).render(
         <React.StrictMode>
             <PixelawProvider worldsRegistry={worldsRegistry} world={DEFAULT_WORLD} engines={engines} coreDefaults={coreDefaults}>
                     <BrowserRouter>
-                        <ChainProvider>
+                        <StarknetChainProvider>
                         <Main />
-                        </ChainProvider>
+                        </StarknetChainProvider>
                     </BrowserRouter>
                 </PixelawProvider>
         </React.StrictMode>

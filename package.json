@@ -1,18 +1,18 @@
 {
   "name": "@pixelaw/vanilla",
-  "private": true,
-  "version": "0.5.3",
+  "private": false,
+  "version": "0.6.3",
   "type": "module",
   "license": "MIT",
   "source": "src/index.ts",
   "main": "dist/index.js",
   "author": "thiscaspar",
   "scripts": {
-    "use-submodules": "node scripts/switchDependencies.js --submodule && pnpm install",
+    "use-workspace": "node scripts/switchDependencies.js --workspace && pnpm install",
     "use-regular": "node scripts/switchDependencies.js && pnpm install",
     "experiments": "tsx  src/scripts/experiments.ts",
     "build-serve": "vite build && http-server dist/",
-    "dev": "vite",
+    "dev": "NODE_ENV=development && vite",
     "build-prod": "tsc && vite build",
     "build": "vite build",
     "preview": "vite preview",
@@ -25,11 +25,6 @@
     "check": "biome check --apply ."
   },
   "dependencies": {
-    "@pixelaw/core": "^0.6.7",
-    "@pixelaw/core-dojo": "^0.6.7",
-    "@pixelaw/core-mud": "^0.6.7",
-    "@pixelaw/react": "^0.6.7",
-    "@pixelaw/react-dojo": "^0.6.7",
     "@react-hook/resize-observer": "^2.0.2",
     "autoprefixer": "^10.4.20",
     "dotenv": "^16.4.7",
@@ -42,7 +37,12 @@
     "tailwindcss": "^3.4.17",
     "tailwindcss-animate": "^1.0.7",
     "unstorage": "^1.14.4",
-    "zustand": "^5.0.2"
+    "zustand": "^5.0.2",
+    "@pixelaw/core": "workspace:*",
+    "@pixelaw/core-dojo": "workspace:*",
+    "@pixelaw/core-mud": "workspace:*",
+    "@pixelaw/react": "workspace:*",
+    "@pixelaw/react-dojo": "workspace:*"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
@@ -59,10 +59,5 @@
     "vite-plugin-top-level-await": "^1.4.4",
     "vite-plugin-wasm": "^3.4.1",
     "vitest": "^2.1.8"
-  },
-  "pnpm": {
-    "patchedDependencies": {
-      "@dojoengine/torii-wasm@1.2.5": "patches/@dojoengine__torii-wasm@1.2.5.patch"
-    }
   }
 }

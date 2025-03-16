@@ -2,7 +2,7 @@
 import fs from 'fs';
 import path from 'path';
 
-const useSubmodules = process.argv.includes('--submodule');
+const useWorkspace = process.argv.includes('--workspace');
 
 const packageJsonPath = path.join(process.cwd(), 'package.json');
 const workspaceYamlDisabled = path.join(process.cwd(), 'pnpm-workspace.disabled.yaml');
@@ -20,12 +20,11 @@ const submodulePaths = {
 };
 
 function newWorkspaceFile (filename){
-    // Create the disabled YAML file if it doesn't exist
     const yamlContent = `packages:\n  - "."\n  - "pixelaw.js/packages/*"\n`;
     fs.writeFileSync(filename, yamlContent);
 }
 
-if (useSubmodules) {
+if (useWorkspace) {
     Object.keys(submodulePaths).forEach(dep => {
         packageJson.dependencies[dep] = submodulePaths[dep];
     });
@@ -51,4 +50,4 @@ if (useSubmodules) {
 }
 
 fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2));
-console.log(`Switched to ${useSubmodules ? 'submodules' : 'regular'} dependencies.`);
+console.log(`Switched to ${useWorkspace ? 'submodules' : 'regular'} dependencies.`);
