@@ -11,8 +11,7 @@ const IN_WORKSPACE = fs.existsSync("pnpm-workspace.yaml")
 export default defineConfig({
     logLevel: "info",
     optimizeDeps: {
-        // exclude: ['@pixelaw/core-dojo']
-        include: ['@pixelaw/core-dojo/DojoSqlPixelStore.webworker']
+        include: ['@pixelaw/core-dojo/dist/DojoSqlPixelStore.webworker.js']
     },
     plugins: [
         react(),
@@ -51,6 +50,8 @@ export default defineConfig({
             "@pixelaw/react-dojo": path.resolve(__dirname, "../pixelaw.js/packages/react-dojo/src"),
             '@': path.resolve(__dirname, './src'),
         }:{
+            // TODO dirty hack to make the webworker available
+            '/node_modules/.vite/deps/DojoSqlPixelStore.webworker.js': path.resolve(__dirname, 'node_modules/@pixelaw/core-dojo/dist/DojoSqlPixelStore.webworker.js'),
             '@': path.resolve(__dirname, './src'),
         },
     },
