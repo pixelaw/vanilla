@@ -1,20 +1,19 @@
-FROM node:22 AS base
+FROM node:22-slim AS base
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
 RUN corepack enable
-
-FROM base AS deps
+COPY . /app
 WORKDIR /app
-COPY package.json yarn.lock ./
-RUN mkdir /app/node_modules
-RUN --mount=type=cache,id=node_modules,target=/app/node_modules yarn install --frozen-lockfile
- 
 
-FROM deps AS build
-COPY . .
-RUN --mount=type=cache,id=node_modules,target=/app/node_modules yarn build
- 
-FROM base
-WORKDIR /app
-COPY --from=deps /app/node_modules /app/node_modules
-COPY --from=build /app/dist /app/dist
-ENV NODE_ENV=production
-CMD ["node", "./dist/index.js"]
+FROM base AS prod-deps
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --prod --frozen-lockfile
+
+FROM base AS build
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
+RUN pnpm run build
+
+
+FROM ghcr.io/pixelaw/core:0.6.20 AS core
+
+COPY --from=prod-deps /app/node_modules /pixelaw/web/node_modules
+COPY --from=build /app/dist /pixelaw/web

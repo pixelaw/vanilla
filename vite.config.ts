@@ -11,7 +11,7 @@ const IN_WORKSPACE = fs.existsSync("pnpm-workspace.yaml")
 export default defineConfig({
     logLevel: "info",
     optimizeDeps: {
-        include: ['@pixelaw/core-dojo/dist/DojoSqlPixelStore.webworker.js']
+        // include: ['@pixelaw/core-dojo/dist/DojoSqlPixelStore.webworker.js']
     },
     plugins: [
         react(),

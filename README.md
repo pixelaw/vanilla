@@ -1,4 +1,5 @@
-# PixelAW.JS
+# Vanilla Pixelaw
+Version 0.6.0
 
 
 ## Getting started
