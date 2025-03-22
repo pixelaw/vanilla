@@ -1,10 +1,10 @@
-import { usePixelawProvider } from "@pixelaw/react"
-import { StarknetWalletSelectorPage } from "@pixelaw/react-dojo"
+import {usePixelawProvider} from "@pixelaw/react"
+import {StarknetWalletSelectorPage} from "@pixelaw/react-dojo"
 
 export const WalletSelectorPage = () => {
     const { engine } = usePixelawProvider()
 
-    if (engine!.constructor.name === "DojoEngine") {
+    if (engine!.id === "dojo") {
         return <StarknetWalletSelectorPage />
     }
     return (
