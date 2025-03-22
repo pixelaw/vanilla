@@ -1,3 +1,5 @@
+import {WorldsRegistry} from "@pixelaw/core";
+
 export const DEFAULT_WORLD = "local"
 
 export const clearDomChildren = (element: HTMLElement) => {
@@ -14,6 +16,17 @@ export const numberToHexRGB = (num: number) => {
     return `#${hex}`.toUpperCase();
 };
 
+export function getWorldForUrl(config: WorldsRegistry, url: string, defaultWorld: string): string  {
+
+    for (const worldName in config) {
+        // @ts-ignore TODO
+        if (config[worldName].config.serverUrl === url) {
+            return worldName;
+        }
+    }
+
+    return defaultWorld;
+}
 
 export function getCoreDefaultsFromUrl() {
     const queryParams = new URLSearchParams(window.location.search);
