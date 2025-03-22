@@ -99,7 +99,7 @@
       "serverUrl": "https://dev.pixelaw.xyz",
       "rpcUrl": "https://katana.dev.pixelaw.xyz",
       "toriiUrl": "https://torii.dev.pixelaw.xyz",
-      "relayUrl": "https://relay.dev.pixelaw.xyz",
+      "relayUrl": "/ip4/127.0.0.1/tcp/9090",
       "feeTokenAddress": "0x49d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7",
       "wallets": {
         "burner": {
