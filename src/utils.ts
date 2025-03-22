@@ -20,7 +20,7 @@ export function getWorldForUrl(config: WorldsRegistry, url: string, defaultWorld
 
     for (const worldName in config) {
         // @ts-ignore TODO
-        if (config[worldName].config.serverUrl === url) {
+        if (config[worldName].config.serverUrl.startsWith(url)) {
             return worldName;
         }
     }

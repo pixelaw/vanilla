@@ -13,7 +13,10 @@ import {WorldsRegistry} from "@pixelaw/core";
 // TODO for now hardcoded, but planning to retrieve from github URL using env WORLDS_REGISTRY_URL
 import worldsRegistry from "@/config/worlds.json"
 
-const world  = getWorldForUrl(worldsRegistry as WorldsRegistry, window.location.href, "local")
+const { protocol, hostname } = window.location;
+const baseUrl = `${protocol}//${hostname}`;
+
+const world  = getWorldForUrl(worldsRegistry as WorldsRegistry, baseUrl, "local")
 
 const rootElement = document.getElementById("root")
 
