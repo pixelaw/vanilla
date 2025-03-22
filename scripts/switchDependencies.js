@@ -20,7 +20,7 @@ const submodulePaths = {
 };
 
 function newWorkspaceFile (filename){
-    const yamlContent = `packages:\n  - "."\n  - "pixelaw.js/packages/*"\n`;
+    const yamlContent = `packages:\n  - "."\n  - "../pixelaw.js/packages/*"\n`;
     fs.writeFileSync(filename, yamlContent);
 }
 
