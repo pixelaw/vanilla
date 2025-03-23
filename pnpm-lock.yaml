@@ -9,20 +9,20 @@ importers:
   .:
     dependencies:
       '@pixelaw/core':
-        specifier: ^0.6.10
-        version: 0.6.10(@types/react@18.3.18)(postcss@8.5.3)(react@18.3.1)(use-sync-external-store@1.4.0(react@18.3.1))
+        specifier: ^0.6.11
+        version: 0.6.11(@types/react@18.3.18)(postcss@8.5.3)(react@18.3.1)(use-sync-external-store@1.4.0(react@18.3.1))
       '@pixelaw/core-dojo':
-        specifier: ^0.6.10
-        version: 0.6.10(@tanstack/react-query@5.68.0(react@18.3.1))(@types/node@22.13.10)(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(encoding@0.1.13)(get-starknet-core@4.0.0)(idb-keyval@6.2.1)(immer@10.1.1)(postcss@8.5.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@2.19.0)(typescript@5.8.2)(use-sync-external-store@1.4.0(react@18.3.1))(zod@3.24.2)
+        specifier: ^0.6.11
+        version: 0.6.11(@tanstack/react-query@5.68.0(react@18.3.1))(@types/node@22.13.10)(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(encoding@0.1.13)(get-starknet-core@4.0.0)(idb-keyval@6.2.1)(immer@10.1.1)(postcss@8.5.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@2.19.0)(typescript@5.8.2)(use-sync-external-store@1.4.0(react@18.3.1))(zod@3.24.2)
       '@pixelaw/core-mud':
-        specifier: ^0.6.10
-        version: 0.6.10(@types/react@18.3.18)(postcss@8.5.3)(react@18.3.1)(use-sync-external-store@1.4.0(react@18.3.1))
+        specifier: ^0.6.11
+        version: 0.6.11(@types/react@18.3.18)(postcss@8.5.3)(react@18.3.1)(use-sync-external-store@1.4.0(react@18.3.1))
       '@pixelaw/react':
-        specifier: ^0.6.10
-        version: 0.6.10(@tanstack/react-query@5.68.0(react@18.3.1))(@types/node@22.13.10)(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(encoding@0.1.13)(get-starknet-core@4.0.0)(idb-keyval@6.2.1)(immer@10.1.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@2.19.0)(typescript@5.8.2)(use-sync-external-store@1.4.0(react@18.3.1))(zod@3.24.2)
+        specifier: ^0.6.11
+        version: 0.6.11(@tanstack/react-query@5.68.0(react@18.3.1))(@types/node@22.13.10)(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(encoding@0.1.13)(get-starknet-core@4.0.0)(idb-keyval@6.2.1)(immer@10.1.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@2.19.0)(typescript@5.8.2)(use-sync-external-store@1.4.0(react@18.3.1))(zod@3.24.2)
       '@pixelaw/react-dojo':
-        specifier: ^0.6.10
-        version: 0.6.10(@tanstack/react-query@5.68.0(react@18.3.1))(@types/node@22.13.10)(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(encoding@0.1.13)(get-starknet-core@4.0.0)(idb-keyval@6.2.1)(immer@10.1.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(starknet@6.23.1(encoding@0.1.13))(type-fest@2.19.0)(typescript@5.8.2)(use-sync-external-store@1.4.0(react@18.3.1))(zod@3.24.2)
+        specifier: ^0.6.11
+        version: 0.6.11(@tanstack/react-query@5.68.0(react@18.3.1))(@types/node@22.13.10)(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(encoding@0.1.13)(get-starknet-core@4.0.0)(idb-keyval@6.2.1)(immer@10.1.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(starknet@6.23.1(encoding@0.1.13))(type-fest@2.19.0)(typescript@5.8.2)(use-sync-external-store@1.4.0(react@18.3.1))(zod@3.24.2)
       '@react-hook/resize-observer':
         specifier: ^2.0.2
         version: 2.0.2(react@18.3.1)
@@ -1085,24 +1085,24 @@ packages:
     resolution: {integrity: sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg==}
     engines: {node: '>= 8'}
 
-  '@pixelaw/core-dojo@0.6.10':
-    resolution: {integrity: sha512-xL7zB/juO+tMCNzXq8OcbuvZoY4mdgd8ZG7JLqEYYdr2U4V6qXDXRpLPLGUg5gvoZyhU1ofSEXKBJ5ku9X6tqQ==}
+  '@pixelaw/core-dojo@0.6.11':
+    resolution: {integrity: sha512-LahTai+CQygBEvDeZVaDlSO1RQ4v3gWrZuq3MGeU0mGIWEbSeDKXtQ5uIngv8xGgSnKM4Zc7Fqh/SQx7pwNLEw==}
 
-  '@pixelaw/core-mud@0.6.10':
-    resolution: {integrity: sha512-hxLlLHXtL/DFvtwXZlpKMYgGJUWvErN9SOpuHJWoWllzuAMtldDnoZytGCo+0t+PFCvVeSDlskrhSv6OC98sDw==}
+  '@pixelaw/core-mud@0.6.11':
+    resolution: {integrity: sha512-KzRUuFhtWT78uiaUOECl5ElE87eYEamXQpSfMtMJDp347Mj0gQidisdTpeoN1ZDKKFJsA3mF3Oo0cT6c92JZUw==}
 
-  '@pixelaw/core@0.6.10':
-    resolution: {integrity: sha512-+J3kMS4XZXUGbhZVIvPEA8RwvHTP4c3obklg2+vc88VRO8mVZLQw+NaiUaPugUltByf7CeOqb/aNoJppNktRDw==}
+  '@pixelaw/core@0.6.11':
+    resolution: {integrity: sha512-/Mnjj/nV3qCEqaCfUfAu2vTq4SUEwkolyK88wB68b4TJQmVaNbcXqHVT+g7zzDuF+hsebwQzoN7fyToxLSozBA==}
 
-  '@pixelaw/react-dojo@0.6.10':
-    resolution: {integrity: sha512-WOeVlnyfn2OhatXDNt/jRPSyQjm2/0ysSQc6C8CnFce+rc8NSAevYTzKlJ2dUAPtMeI8AS39HYNk3TRBMZQgew==}
+  '@pixelaw/react-dojo@0.6.11':
+    resolution: {integrity: sha512-/H23LtS6DcULYvLXTuzcGFLSum9RblIRSP2tRITXTls58BtYuVTBD2/iOs3XrzVGZ1VSDMBQDTNKWErumQ2oKg==}
     peerDependencies:
       react: ^18.2.0
       react-dom: ^18.2.0
       starknet: 6.21.0
 
-  '@pixelaw/react@0.6.10':
-    resolution: {integrity: sha512-vwO2dHp4kMYhpjE4NQOfDd4SMn++CL/zzGy6NForKNXptSFMzOukonMyOlKohl1qN41AUD6enPWZPKTrg++OOw==}
+  '@pixelaw/react@0.6.11':
+    resolution: {integrity: sha512-LiXMv9pDGYjpVC3zJGPGA31ua+VVUlXAarbnOVAoOwQBYfCshU0GaNyirExduw7EeFe0Sv9BLR8xvW0hCpl07Q==}
     peerDependencies:
       react: ^18.2.0
       react-dom: ^18.2.0
@@ -4336,7 +4336,7 @@ snapshots:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.19.1
 
-  '@pixelaw/core-dojo@0.6.10(@tanstack/react-query@5.68.0(react@18.3.1))(@types/node@22.13.10)(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(encoding@0.1.13)(get-starknet-core@4.0.0)(idb-keyval@6.2.1)(immer@10.1.1)(postcss@8.5.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@2.19.0)(typescript@5.8.2)(use-sync-external-store@1.4.0(react@18.3.1))(zod@3.24.2)':
+  '@pixelaw/core-dojo@0.6.11(@tanstack/react-query@5.68.0(react@18.3.1))(@types/node@22.13.10)(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(encoding@0.1.13)(get-starknet-core@4.0.0)(idb-keyval@6.2.1)(immer@10.1.1)(postcss@8.5.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@2.19.0)(typescript@5.8.2)(use-sync-external-store@1.4.0(react@18.3.1))(zod@3.24.2)':
     dependencies:
       '@cartridge/connector': 0.6.0(@starknet-react/core@3.7.2(get-starknet-core@4.0.0)(react@18.3.1)(starknet@6.23.1(encoding@0.1.13))(typescript@5.8.2))(starknet@6.23.1(encoding@0.1.13))
       '@dojoengine/core': 1.2.7(encoding@0.1.13)(typescript@5.8.2)
@@ -4347,7 +4347,7 @@ snapshots:
       '@dojoengine/state': 1.2.7(@types/node@22.13.10)(starknet@6.23.1(encoding@0.1.13))(typescript@5.8.2)(zod@3.24.2)
       '@dojoengine/torii-client': 1.2.7
       '@dojoengine/utils': 1.2.7(starknet@6.23.1(encoding@0.1.13))(typescript@5.8.2)(zod@3.24.2)
-      '@pixelaw/core': 0.6.10(@types/react@18.3.18)(postcss@8.5.3)(react@18.3.1)(use-sync-external-store@1.4.0(react@18.3.1))
+      '@pixelaw/core': 0.6.11(@types/react@18.3.18)(postcss@8.5.3)(react@18.3.1)(use-sync-external-store@1.4.0(react@18.3.1))
       '@scure/starknet': 1.1.0
       '@starknet-react/core': 3.7.2(get-starknet-core@4.0.0)(react@18.3.1)(starknet@6.23.1(encoding@0.1.13))(typescript@5.8.2)
       autoprefixer: 10.4.21(postcss@8.5.3)
@@ -4408,9 +4408,9 @@ snapshots:
       - utf-8-validate
       - zod
 
-  '@pixelaw/core-mud@0.6.10(@types/react@18.3.18)(postcss@8.5.3)(react@18.3.1)(use-sync-external-store@1.4.0(react@18.3.1))':
+  '@pixelaw/core-mud@0.6.11(@types/react@18.3.18)(postcss@8.5.3)(react@18.3.1)(use-sync-external-store@1.4.0(react@18.3.1))':
     dependencies:
-      '@pixelaw/core': 0.6.10(@types/react@18.3.18)(postcss@8.5.3)(react@18.3.1)(use-sync-external-store@1.4.0(react@18.3.1))
+      '@pixelaw/core': 0.6.11(@types/react@18.3.18)(postcss@8.5.3)(react@18.3.1)(use-sync-external-store@1.4.0(react@18.3.1))
     transitivePeerDependencies:
       - '@azure/app-configuration'
       - '@azure/cosmos'
@@ -4434,7 +4434,7 @@ snapshots:
       - uploadthing
       - use-sync-external-store
 
-  '@pixelaw/core@0.6.10(@types/react@18.3.18)(postcss@8.5.3)(react@18.3.1)(use-sync-external-store@1.4.0(react@18.3.1))':
+  '@pixelaw/core@0.6.11(@types/react@18.3.18)(postcss@8.5.3)(react@18.3.1)(use-sync-external-store@1.4.0(react@18.3.1))':
     dependencies:
       '@types/node': 18.19.80
       '@types/upng-js': 2.1.5
@@ -4472,12 +4472,12 @@ snapshots:
       - uploadthing
       - use-sync-external-store
 
-  '@pixelaw/react-dojo@0.6.10(@tanstack/react-query@5.68.0(react@18.3.1))(@types/node@22.13.10)(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(encoding@0.1.13)(get-starknet-core@4.0.0)(idb-keyval@6.2.1)(immer@10.1.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(starknet@6.23.1(encoding@0.1.13))(type-fest@2.19.0)(typescript@5.8.2)(use-sync-external-store@1.4.0(react@18.3.1))(zod@3.24.2)':
+  '@pixelaw/react-dojo@0.6.11(@tanstack/react-query@5.68.0(react@18.3.1))(@types/node@22.13.10)(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(encoding@0.1.13)(get-starknet-core@4.0.0)(idb-keyval@6.2.1)(immer@10.1.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(starknet@6.23.1(encoding@0.1.13))(type-fest@2.19.0)(typescript@5.8.2)(use-sync-external-store@1.4.0(react@18.3.1))(zod@3.24.2)':
     dependencies:
       '@cartridge/connector': 0.5.9(encoding@0.1.13)(get-starknet-core@4.0.0)(react@18.3.1)(typescript@5.8.2)
-      '@pixelaw/core': 0.6.10(@types/react@18.3.18)(postcss@8.5.3)(react@18.3.1)(use-sync-external-store@1.4.0(react@18.3.1))
-      '@pixelaw/core-dojo': 0.6.10(@tanstack/react-query@5.68.0(react@18.3.1))(@types/node@22.13.10)(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(encoding@0.1.13)(get-starknet-core@4.0.0)(idb-keyval@6.2.1)(immer@10.1.1)(postcss@8.5.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@2.19.0)(typescript@5.8.2)(use-sync-external-store@1.4.0(react@18.3.1))(zod@3.24.2)
-      '@pixelaw/react': 0.6.10(@tanstack/react-query@5.68.0(react@18.3.1))(@types/node@22.13.10)(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(encoding@0.1.13)(get-starknet-core@4.0.0)(idb-keyval@6.2.1)(immer@10.1.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@2.19.0)(typescript@5.8.2)(use-sync-external-store@1.4.0(react@18.3.1))(zod@3.24.2)
+      '@pixelaw/core': 0.6.11(@types/react@18.3.18)(postcss@8.5.3)(react@18.3.1)(use-sync-external-store@1.4.0(react@18.3.1))
+      '@pixelaw/core-dojo': 0.6.11(@tanstack/react-query@5.68.0(react@18.3.1))(@types/node@22.13.10)(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(encoding@0.1.13)(get-starknet-core@4.0.0)(idb-keyval@6.2.1)(immer@10.1.1)(postcss@8.5.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@2.19.0)(typescript@5.8.2)(use-sync-external-store@1.4.0(react@18.3.1))(zod@3.24.2)
+      '@pixelaw/react': 0.6.11(@tanstack/react-query@5.68.0(react@18.3.1))(@types/node@22.13.10)(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(encoding@0.1.13)(get-starknet-core@4.0.0)(idb-keyval@6.2.1)(immer@10.1.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@2.19.0)(typescript@5.8.2)(use-sync-external-store@1.4.0(react@18.3.1))(zod@3.24.2)
       '@starknet-react/chains': 3.1.2
       '@starknet-react/core': 3.7.2(get-starknet-core@4.0.0)(react@18.3.1)(starknet@6.23.1(encoding@0.1.13))(typescript@5.8.2)
       postcss: 8.5.3
@@ -4533,10 +4533,10 @@ snapshots:
       - utf-8-validate
       - zod
 
-  '@pixelaw/react@0.6.10(@tanstack/react-query@5.68.0(react@18.3.1))(@types/node@22.13.10)(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(encoding@0.1.13)(get-starknet-core@4.0.0)(idb-keyval@6.2.1)(immer@10.1.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@2.19.0)(typescript@5.8.2)(use-sync-external-store@1.4.0(react@18.3.1))(zod@3.24.2)':
+  '@pixelaw/react@0.6.11(@tanstack/react-query@5.68.0(react@18.3.1))(@types/node@22.13.10)(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(encoding@0.1.13)(get-starknet-core@4.0.0)(idb-keyval@6.2.1)(immer@10.1.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@2.19.0)(typescript@5.8.2)(use-sync-external-store@1.4.0(react@18.3.1))(zod@3.24.2)':
     dependencies:
-      '@pixelaw/core': 0.6.10(@types/react@18.3.18)(postcss@8.5.3)(react@18.3.1)(use-sync-external-store@1.4.0(react@18.3.1))
-      '@pixelaw/core-dojo': 0.6.10(@tanstack/react-query@5.68.0(react@18.3.1))(@types/node@22.13.10)(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(encoding@0.1.13)(get-starknet-core@4.0.0)(idb-keyval@6.2.1)(immer@10.1.1)(postcss@8.5.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@2.19.0)(typescript@5.8.2)(use-sync-external-store@1.4.0(react@18.3.1))(zod@3.24.2)
+      '@pixelaw/core': 0.6.11(@types/react@18.3.18)(postcss@8.5.3)(react@18.3.1)(use-sync-external-store@1.4.0(react@18.3.1))
+      '@pixelaw/core-dojo': 0.6.11(@tanstack/react-query@5.68.0(react@18.3.1))(@types/node@22.13.10)(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(encoding@0.1.13)(get-starknet-core@4.0.0)(idb-keyval@6.2.1)(immer@10.1.1)(postcss@8.5.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(type-fest@2.19.0)(typescript@5.8.2)(use-sync-external-store@1.4.0(react@18.3.1))(zod@3.24.2)
       postcss: 8.5.3
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)

@@ -63,13 +63,6 @@ export default defineConfig({
                 main: path.resolve(__dirname, 'index.html'),
             },
         },
-        // minify: 'terser',
-        // terserOptions: {
-        //     mangle: {
-        //         reserved: ['DojoEngine'],
-        //     },
-        // },
-
     },
 
     server: {
