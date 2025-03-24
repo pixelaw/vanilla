@@ -2,16 +2,40 @@ import Main from "@/Main.tsx"
 import React from "react"
 import ReactDOM from "react-dom/client"
 import "@/index.css"
-import {PixelawProvider} from "@pixelaw/react"
+import {PixelawProvider, usePixelawProvider} from "@pixelaw/react"
 import {BrowserRouter} from "react-router-dom"
 import {DojoEngine} from "@pixelaw/core-dojo"
 import {MudEngine} from "@pixelaw/core-mud"
 import {getCoreDefaultsFromUrl, getWorldForUrl} from "@/utils.ts";
 import {StarknetChainProvider} from "@pixelaw/react-dojo"
 import {WorldsRegistry} from "@pixelaw/core";
-
-// TODO for now hardcoded, but planning to retrieve from github URL using env WORLDS_REGISTRY_URL
 import worldsRegistry from "@/config/worlds.json"
+
+const AppContent = () => {
+    const { coreStatus } = usePixelawProvider()
+
+    if (coreStatus == "error") {
+        return <div className="error-message">Error occurred, check the logs</div>
+    }
+
+    return (
+        <BrowserRouter>
+            {coreStatus === 'ready' ? (
+                <StarknetChainProvider> <Main /></StarknetChainProvider>
+            ) : (
+                <div className="loading-message">Loading: {coreStatus}</div>
+            )}
+        </BrowserRouter>
+    )
+}
+
+const App = () => {
+    return (
+        <PixelawProvider worldsRegistry={worldsRegistry as WorldsRegistry} world={world} engines={engines} coreDefaults={coreDefaults}>
+            <AppContent />
+        </PixelawProvider>
+    )
+}
 
 const { protocol, hostname } = window.location;
 const baseUrl = `${protocol}//${hostname}`;
@@ -27,13 +51,7 @@ const coreDefaults = getCoreDefaultsFromUrl()
 if (rootElement) {
     ReactDOM.createRoot(rootElement).render(
         <React.StrictMode>
-            <PixelawProvider worldsRegistry={worldsRegistry as WorldsRegistry} world={world} engines={engines} coreDefaults={coreDefaults}>
-                    <BrowserRouter>
-                        <StarknetChainProvider>
-                        <Main />
-                        </StarknetChainProvider>
-                    </BrowserRouter>
-                </PixelawProvider>
+            <App />
         </React.StrictMode>
     )
 } else {

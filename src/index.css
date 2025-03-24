@@ -80,3 +80,27 @@ button:focus-visible {
         background-color: #f9f9f9;
     }
 }
+.loading-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #646cff;
+    background-color: black;
+    padding: 20px;
+    border-radius: 5px;
+    font-size: 24px;
+    text-align: center;
+}
+.error-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    background-color: red;
+    padding: 20px;
+    border-radius: 5px;
+    font-size: 24px;
+    text-align: center;
+}
