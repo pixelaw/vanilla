@@ -23,7 +23,7 @@ const AppContent = () => {
             {coreStatus === 'ready' ? (
                 <StarknetChainProvider> <Main /></StarknetChainProvider>
             ) : (
-                <div className="loading-message">Loading: {coreStatus}</div>
+                <div className="loading-message">Loading, pls wait 🧘</div>
             )}
         </BrowserRouter>
     )
