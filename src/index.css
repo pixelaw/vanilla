@@ -109,6 +109,18 @@ button:focus-visible {
     Interaction below
     TODO fix up styling
  */
+.emoji-picker-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: white; /* or any other color */
+	z-index: 1000; /* Ensure it's above other elements */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
 .dialog {
 	position: absolute; /* Position it relative to the nearest positioned ancestor */
 	top: 50%;
@@ -118,6 +130,7 @@ button:focus-visible {
 	border-radius: 8px;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 	padding: 20px;
+	height: 300px;
 	width: 300px;
 	background-color: #fff;
 	z-index: 20; /* Ensure it's above the overlay */
