@@ -1,4 +1,4 @@
-import type {WorldsRegistry} from "@pixelaw/core";
+import {type WorldsRegistry, ZOOM_DEFAULT} from "@pixelaw/core";
 
 export const DEFAULT_WORLD = "local";
 
@@ -35,15 +35,15 @@ export function getCoreDefaultsFromUrl() {
 	const queryParams = new URLSearchParams(window.location.search);
 	const app = queryParams.get("app") || "";
 	const color = Number.parseInt(queryParams.get("color") || "0", 10);
-	const center =
-		queryParams.get("center") ||
-		("50,50"?.split(",").map(Number) as [number, number] | undefined);
+	const center = queryParams.get("center")?.split(",").map(Number) as
+		| [number, number]
+		| undefined;
 	const zoom = Number.parseFloat(queryParams.get("zoom") || "7");
 
 	return {
 		app,
-		color: isNaN(color) ? 0 : color,
-		center: center && center.length === 2 ? center : [0, 0],
-		zoom: isNaN(zoom) ? 0 : zoom,
+		color: Number.isNaN(color) ? 0 : color,
+		center: center && center.length === 2 ? center : [12, 12],
+		zoom: Number.isNaN(zoom) ? ZOOM_DEFAULT : zoom,
 	};
 }
