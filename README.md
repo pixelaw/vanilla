@@ -1,5 +1,5 @@
 # Vanilla Pixelaw
-Version 0.6.14
+Version 0.6.15
 
 
 ## Getting started
