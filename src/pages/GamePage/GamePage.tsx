@@ -4,6 +4,7 @@ import type {Coordinate, Interaction, QueueItem} from "@pixelaw/core";
 import {InteractionDialog, usePixelawProvider} from "@pixelaw/react";
 import {useEffect, useMemo, useRef, useState} from "react";
 import styles from "./GamePage.module.css";
+import {getZoomLevel} from "../../../../pixelaw.js/packages/core/src/renderers/Canvas2DRenderer/zoom.ts";
 
 const GamePage: React.FC = () => {
 	// TODO: Ideally pixelawCore doesnt need to be exposed here, and we have a setter for renderer
@@ -15,7 +16,7 @@ const GamePage: React.FC = () => {
 		useState<Interaction | null>(null);
 
 	const zoombasedAdjustment = useMemo(() => {
-		return zoom > 3000 ? "1rem" : "-100%";
+		return ["mid", "close"].includes(getZoomLevel(zoom)) ? "1rem" : "-100%";
 	}, [zoom]);
 
 	// Updating the URL
@@ -39,6 +40,11 @@ const GamePage: React.FC = () => {
 	// Handle viewport events
 	useEffect(() => {
 		const handleCellClick = async (cell: Coordinate) => {
+			if (getZoomLevel(pixelawCore.getZoom()) === "far") {
+				console.warn("not handling cell click if zoomed out far");
+				return;
+			}
+
 			const interaction = await pixelawCore.prepInteraction(cell);
 
 			if (interaction.getUserParams().length === 0) {
@@ -51,10 +57,14 @@ const GamePage: React.FC = () => {
 		};
 
 		const handleQueueItem = (item: QueueItem) => {
+			console.log("scheduled+");
 			pixelawCore.executeQueueItem(item).catch(console.error);
 		};
-
+		console.log("handling");
 		pixelawCore.queue.eventEmitter.on("scheduled", handleQueueItem);
+		pixelawCore.queue.retrieve().then(() => {
+			//Just let it run
+		});
 
 		// pixelawCore.events.on("cellHovered", handleCellHover)
 		pixelawCore.events.on("cellClicked", handleCellClick);
