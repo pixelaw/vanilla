@@ -1,4 +1,4 @@
-import {WorldsRegistry} from "@pixelaw/core";
+import type {WorldsRegistry} from "@pixelaw/core";
 
 export const DEFAULT_WORLD = "local";
 
@@ -35,10 +35,10 @@ export function getCoreDefaultsFromUrl() {
 	const queryParams = new URLSearchParams(window.location.search);
 	const app = queryParams.get("app") || "";
 	const color = Number.parseInt(queryParams.get("color") || "0", 10);
-	const center = queryParams.get("center")?.split(",").map(Number) as
-		| [number, number]
-		| undefined;
-	const zoom = Number.parseFloat(queryParams.get("zoom") || "1");
+	const center =
+		queryParams.get("center") ||
+		("50,50"?.split(",").map(Number) as [number, number] | undefined);
+	const zoom = Number.parseFloat(queryParams.get("zoom") || "7");
 
 	return {
 		app,
