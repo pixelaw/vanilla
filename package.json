@@ -26,11 +26,11 @@
     "check": "biome check --apply ."
   },
   "dependencies": {
-    "@pixelaw/core": "^0.6.15",
-    "@pixelaw/core-dojo": "^0.6.15",
-    "@pixelaw/core-mud": "^0.6.15",
-    "@pixelaw/react": "^0.6.15",
-    "@pixelaw/react-dojo": "^0.6.15",
+    "@pixelaw/core": "^0.6.17",
+    "@pixelaw/core-dojo": "^0.6.17",
+    "@pixelaw/core-mud": "^0.6.17",
+    "@pixelaw/react": "^0.6.17",
+    "@pixelaw/react-dojo": "^0.6.17",
     "http-server": "^14.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -40,12 +40,12 @@
     "unstorage": "^1.14.4"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.21",
     "@biomejs/biome": "1.9.4",
     "@types/node": "^22.13.0",
     "@types/react": "^18.3.1",
     "@types/react-dom": "^18.2.0",
     "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.21",
     "typescript": "^5.7.2",
     "vite": "^6.0.5",
     "vite-envs": "^4.4.10",

@@ -1,10 +1,10 @@
 import Apps from "@/components/GamePage/Apps/Apps.tsx";
 import SimpleColorPicker from "@/components/GamePage/ColorPicker/SimpleColorPicker.tsx";
-import type {Coordinate, Interaction, QueueItem} from "@pixelaw/core";
+import type {Coordinate, getZoomLevel, Interaction, QueueItem} from "@pixelaw/core";
+
 import {InteractionDialog, usePixelawProvider} from "@pixelaw/react";
 import {useEffect, useMemo, useRef, useState} from "react";
 import styles from "./GamePage.module.css";
-import {getZoomLevel} from "../../../../pixelaw.js/packages/core/src/renderers/Canvas2DRenderer/zoom.ts";
 
 const GamePage: React.FC = () => {
 	// TODO: Ideally pixelawCore doesnt need to be exposed here, and we have a setter for renderer
