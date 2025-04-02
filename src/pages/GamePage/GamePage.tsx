@@ -1,6 +1,6 @@
 import Apps from "@/components/GamePage/Apps/Apps.tsx";
 import SimpleColorPicker from "@/components/GamePage/ColorPicker/SimpleColorPicker.tsx";
-import type {Coordinate, getZoomLevel, Interaction, QueueItem} from "@pixelaw/core";
+import {type Coordinate, getZoomLevel, type Interaction, type QueueItem,} from "@pixelaw/core";
 
 import {InteractionDialog, usePixelawProvider} from "@pixelaw/react";
 import {useEffect, useMemo, useRef, useState} from "react";
