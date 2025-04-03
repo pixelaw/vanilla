@@ -4,7 +4,18 @@ import {type Coordinate, getZoomLevel, type Interaction, type QueueItem,} from "
 
 import {InteractionDialog, usePixelawProvider} from "@pixelaw/react";
 import {useEffect, useMemo, useRef, useState} from "react";
-import styles from "./GamePage.module.css";
+import styles from "./GamePage.module.css"; // biome-ignore lint/complexity/noBannedTypes: TODO
+
+// biome-ignore lint/complexity/noBannedTypes: TODO
+function debounce(func: Function, wait: number) {
+	let timeout: NodeJS.Timeout;
+	const debouncedFunction = (...args: any[]) => {
+		clearTimeout(timeout);
+		timeout = setTimeout(() => func(...args), wait);
+	};
+	debouncedFunction.cancel = () => clearTimeout(timeout);
+	return debouncedFunction;
+}
 
 const GamePage: React.FC = () => {
 	// TODO: Ideally pixelawCore doesnt need to be exposed here, and we have a setter for renderer
@@ -34,7 +45,16 @@ const GamePage: React.FC = () => {
 				window.history.replaceState(null, "", newSearch);
 			}
 		};
-		updateURL();
+		const debounceUpdateURL = debounce(updateURL, 300);
+
+		try {
+			debounceUpdateURL();
+		} catch (e) {
+			console.log(e);
+		}
+		return () => {
+			debounceUpdateURL.cancel();
+		};
 	}, [app, center, zoom, color, world]);
 
 	// Handle viewport events
@@ -86,7 +106,7 @@ const GamePage: React.FC = () => {
 		<>
 			<div
 				ref={rendererContainerRef}
-				style={{ width: "100%", height: "100%" }}
+				style={{ width: "100%", height: "100%", touchAction: "none" }}
 			/>
 
 			<div
