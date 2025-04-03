@@ -9,7 +9,7 @@
   "author": "thiscaspar",
   "packageManager": "pnpm@10.5.2",
   "scripts": {
-    "use-workspace": "node scripts/switchDependencies.js --workspace && pnpm install",
+    "use-workspace": "node scripts/switchDependencies.js --workspace && pnpm install && pnpm build",
     "use-regular": "node scripts/switchDependencies.js && pnpm install && pnpm upgrade_pixelaw",
     "experiments": "tsx  src/scripts/experiments.ts",
     "build-serve": "vite build && http-server dist/",
@@ -26,11 +26,11 @@
     "check": "biome check --apply ."
   },
   "dependencies": {
-    "@pixelaw/core": "^0.6.19",
-    "@pixelaw/core-dojo": "^0.6.19",
-    "@pixelaw/core-mud": "^0.6.19",
-    "@pixelaw/react": "^0.6.19",
-    "@pixelaw/react-dojo": "^0.6.19",
+    "@pixelaw/core": "^0.6.20",
+    "@pixelaw/core-dojo": "^0.6.20",
+    "@pixelaw/core-mud": "^0.6.20",
+    "@pixelaw/react": "^0.6.20",
+    "@pixelaw/react-dojo": "^0.6.20",
     "http-server": "^14.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
