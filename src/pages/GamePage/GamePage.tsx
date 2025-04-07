@@ -1,6 +1,6 @@
 import Apps from "@/components/GamePage/Apps/Apps.tsx";
 import SimpleColorPicker from "@/components/GamePage/ColorPicker/SimpleColorPicker.tsx";
-import {type Coordinate, getZoomLevel, type Interaction, type QueueItem,} from "@pixelaw/core";
+import {type Alert, type Coordinate, getZoomLevel, type Interaction, type QueueItem,} from "@pixelaw/core";
 
 import {InteractionDialog, usePixelawProvider} from "@pixelaw/react";
 import {useEffect, useMemo, useRef, useState} from "react";
@@ -82,6 +82,10 @@ const GamePage: React.FC = () => {
 			pixelawCore.executeQueueItem(item).catch(console.error);
 		};
 
+		const handleAlert = (item: Alert) => {
+			console.log("ALERT", item);
+		};
+
 		const handleError = (error: SimplePixelError) => {
 			console.log("handleError", error);
 			if (error.coordinate) {
@@ -104,12 +108,14 @@ const GamePage: React.FC = () => {
 		// pixelawCore.events.on("cellHovered", handleCellHover)
 		pixelawCore.events.on("cellClicked", handleCellClick);
 		pixelawCore.events.on("error", handleError);
+		pixelawCore.events.on("alert", handleAlert);
 
 		return () => {
 			// pixelawCore.events.off("cellHovered", handleCellHover)
 			pixelawCore.events.off("cellClicked", handleCellClick);
 			pixelawCore.queue.eventEmitter.off("scheduled", handleQueueItem);
 			pixelawCore.events.off("error", handleError);
+			pixelawCore.events.off("alert", handleAlert);
 		};
 	}, [pixelawCore]);
 
