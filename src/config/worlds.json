@@ -92,13 +92,13 @@
 			"world": "0x6f130c8e150882e39cbe878c650c8f35c86579180dbc77d0c1cbe169449b5f6"
 		}
 	},
-	"dev": {
+	"demo": {
 		"engine": "dojo",
-		"description": "Dev server: https://dev.pixelaw.xyz",
+		"description": "Demo server: https://demo.pixelaw.xyz",
 		"config": {
-			"serverUrl": "https://dev.pixelaw.xyz",
-			"rpcUrl": "https://katana.dev.pixelaw.xyz",
-			"toriiUrl": "https://torii.dev.pixelaw.xyz",
+			"serverUrl": "https://demo.pixelaw.xyz",
+			"rpcUrl": "https://demo.pixelaw.xyz/rpc",
+			"toriiUrl": "https://demo.pixelaw.xyz/torii",
 			"relayUrl": "/ip4/127.0.0.1/tcp/9090",
 			"feeTokenAddress": "0x49d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7",
 			"wallets": {
