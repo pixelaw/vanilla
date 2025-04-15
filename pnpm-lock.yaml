@@ -9,20 +9,20 @@ importers:
   .:
     dependencies:
       '@pixelaw/core':
-        specifier: ^0.6.21
-        version: 0.6.21
+        specifier: workspace:*
+        version: link:../pixelaw.js/packages/core
       '@pixelaw/core-dojo':
-        specifier: ^0.6.21
-        version: 0.6.21(@metamask/sdk@0.32.1(bufferutil@4.0.9)(encoding@0.1.13)(utf-8-validate@5.0.10))(@phantom/wallet-sdk@0.0.23)(@tanstack/react-query@5.68.0(react@18.3.1))(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(bufferutil@4.0.9)(encoding@0.1.13)(get-starknet-core@4.0.0)(idb-keyval@6.2.1)(open@10.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(starknetkit@2.10.4(bufferutil@4.0.9)(starknet@6.23.1(encoding@0.1.13))(typescript@5.8.2)(utf-8-validate@5.0.10)(zod@3.24.2))(typescript@5.8.2)(utf-8-validate@5.0.10)(zod@3.24.2)
+        specifier: workspace:*
+        version: link:../pixelaw.js/packages/core-dojo
       '@pixelaw/core-mud':
-        specifier: ^0.6.21
-        version: 0.6.21
+        specifier: workspace:*
+        version: link:../pixelaw.js/packages/core-mud
       '@pixelaw/react':
-        specifier: ^0.6.21
-        version: 0.6.21(idb-keyval@6.2.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: workspace:*
+        version: link:../pixelaw.js/packages/react
       '@pixelaw/react-dojo':
-        specifier: ^0.6.21
-        version: 0.6.21(@metamask/sdk@0.32.1(bufferutil@4.0.9)(encoding@0.1.13)(utf-8-validate@5.0.10))(@phantom/wallet-sdk@0.0.23)(@tanstack/react-query@5.68.0(react@18.3.1))(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(bufferutil@4.0.9)(encoding@0.1.13)(get-starknet-core@4.0.0)(idb-keyval@6.2.1)(open@10.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(starknet@6.23.1(encoding@0.1.13))(typescript@5.8.2)(utf-8-validate@5.0.10)(zod@3.24.2)
+        specifier: workspace:*
+        version: link:../pixelaw.js/packages/react-dojo
       http-server:
         specifier: ^14.1.1
         version: 14.1.1
@@ -1143,28 +1143,6 @@ packages:
 
   '@phantom/wallet-sdk@0.0.23':
     resolution: {integrity: sha512-uwmUUAIzdNK1jT4LpJaXDnnyzohqMehwFjBv+VLSGAxtoaqnhl4MSBQ76n2jfXJEctEUND24FGBOpw+787cJZA==}
-
-  '@pixelaw/core-dojo@0.6.21':
-    resolution: {integrity: sha512-zvuLrD3LdwlNCOS/5QuhNWl5OdoGLEIBMb1kNamQbRbdV4cSYHcdjwYBZQEmsK24LfbCXBsWhVyrHDe4xQxLng==}
-
-  '@pixelaw/core-mud@0.6.21':
-    resolution: {integrity: sha512-m3j1ceM6WPsAvDzBwue+I2TscdhMwRkTGP5dTwJWU9DHuWDxjSOzefWwJAmrZjw2zrT4OkiUpwi2x56BNLvmHQ==}
-
-  '@pixelaw/core@0.6.21':
-    resolution: {integrity: sha512-Tl2k7MBAuJTnc7VxcqL2b/4N0bk0RHhmk46rvINrc/6K4ke29HcU4OgVq9a4xnGBXbWBN/0ORPnDkBcSHp4Kkg==}
-
-  '@pixelaw/react-dojo@0.6.21':
-    resolution: {integrity: sha512-Do/NO2hSiJKJ5FUdQDKcSbCuoLhkJyRPuqrXnP/5ZdNpUzxnUfHwb52UdGRe2NPiy+xwWqwBhRyEhpXpQHx5rA==}
-    peerDependencies:
-      react: ^18.2.0
-      react-dom: ^18.2.0
-      starknet: 6.21.0
-
-  '@pixelaw/react@0.6.21':
-    resolution: {integrity: sha512-kIKsqwlMIZmNwiE6N6WXDKJBYCQoXOBvKY07qldlrJzsxn2jWq8uXtNDlMfKmdpfr0+BtcWUy06R2SPGc51lRg==}
-    peerDependencies:
-      react: ^18.2.0
-      react-dom: ^18.2.0
 
   '@pkgjs/parseargs@0.11.0':
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
@@ -4410,174 +4388,6 @@ snapshots:
   '@paulmillr/qr@0.2.1': {}
 
   '@phantom/wallet-sdk@0.0.23': {}
-
-  '@pixelaw/core-dojo@0.6.21(@metamask/sdk@0.32.1(bufferutil@4.0.9)(encoding@0.1.13)(utf-8-validate@5.0.10))(@phantom/wallet-sdk@0.0.23)(@tanstack/react-query@5.68.0(react@18.3.1))(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(bufferutil@4.0.9)(encoding@0.1.13)(get-starknet-core@4.0.0)(idb-keyval@6.2.1)(open@10.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(starknetkit@2.10.4(bufferutil@4.0.9)(starknet@6.23.1(encoding@0.1.13))(typescript@5.8.2)(utf-8-validate@5.0.10)(zod@3.24.2))(typescript@5.8.2)(utf-8-validate@5.0.10)(zod@3.24.2)':
-    dependencies:
-      '@cartridge/connector': 0.7.8(@metamask/sdk@0.32.1(bufferutil@4.0.9)(encoding@0.1.13)(utf-8-validate@5.0.10))(@phantom/wallet-sdk@0.0.23)(@starknet-react/core@3.7.2(bufferutil@4.0.9)(get-starknet-core@4.0.0)(react@18.3.1)(starknet@6.23.1(encoding@0.1.13))(typescript@5.8.2)(utf-8-validate@5.0.10))(open@10.1.0)(starknet@6.23.1(encoding@0.1.13))(starknetkit@2.10.4(bufferutil@4.0.9)(starknet@6.23.1(encoding@0.1.13))(typescript@5.8.2)(utf-8-validate@5.0.10)(zod@3.24.2))
-      '@dojoengine/core': 1.4.0(bufferutil@4.0.9)(encoding@0.1.13)(typescript@5.8.2)(utf-8-validate@5.0.10)
-      '@dojoengine/create-burner': 1.4.0(bufferutil@4.0.9)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(starknet@6.23.1(encoding@0.1.13))(typescript@5.8.2)(utf-8-validate@5.0.10)
-      '@dojoengine/sdk': 1.4.0(@tanstack/react-query@5.68.0(react@18.3.1))(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(bufferutil@4.0.9)(encoding@0.1.13)(get-starknet-core@4.0.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(starknet@6.23.1(encoding@0.1.13))(typescript@5.8.2)(utf-8-validate@5.0.10)(zod@3.24.2)
-      '@dojoengine/torii-client': 1.4.0
-      '@pixelaw/core': 0.6.21
-      '@scure/starknet': 1.1.0
-      '@starknet-react/core': 3.7.2(bufferutil@4.0.9)(get-starknet-core@4.0.0)(react@18.3.1)(starknet@6.23.1(encoding@0.1.13))(typescript@5.8.2)(utf-8-validate@5.0.10)
-      mitt: 3.0.1
-      starknet: 6.23.1(encoding@0.1.13)
-      unstorage: 1.15.0(idb-keyval@6.2.1)
-    transitivePeerDependencies:
-      - '@azure/app-configuration'
-      - '@azure/cosmos'
-      - '@azure/data-tables'
-      - '@azure/identity'
-      - '@azure/keyvault-secrets'
-      - '@azure/storage-blob'
-      - '@capacitor/preferences'
-      - '@deno/kv'
-      - '@metamask/sdk'
-      - '@netlify/blobs'
-      - '@phantom/wallet-sdk'
-      - '@planetscale/database'
-      - '@tanstack/react-query'
-      - '@types/react'
-      - '@types/react-dom'
-      - '@upstash/redis'
-      - '@vercel/blob'
-      - '@vercel/kv'
-      - aws4fetch
-      - bufferutil
-      - db0
-      - encoding
-      - get-starknet-core
-      - idb-keyval
-      - ioredis
-      - open
-      - react
-      - react-dom
-      - starknetkit
-      - typescript
-      - uploadthing
-      - utf-8-validate
-      - zod
-
-  '@pixelaw/core-mud@0.6.21':
-    dependencies:
-      '@pixelaw/core': 0.6.21
-    transitivePeerDependencies:
-      - '@azure/app-configuration'
-      - '@azure/cosmos'
-      - '@azure/data-tables'
-      - '@azure/identity'
-      - '@azure/keyvault-secrets'
-      - '@azure/storage-blob'
-      - '@capacitor/preferences'
-      - '@deno/kv'
-      - '@netlify/blobs'
-      - '@planetscale/database'
-      - '@upstash/redis'
-      - '@vercel/blob'
-      - '@vercel/kv'
-      - aws4fetch
-      - db0
-      - ioredis
-      - uploadthing
-
-  '@pixelaw/core@0.6.21':
-    dependencies:
-      '@types/node': 22.13.17
-      canvas: 3.1.0
-      idb-keyval: 6.2.1
-      mitt: 3.0.1
-      unstorage: 1.15.0(idb-keyval@6.2.1)
-    transitivePeerDependencies:
-      - '@azure/app-configuration'
-      - '@azure/cosmos'
-      - '@azure/data-tables'
-      - '@azure/identity'
-      - '@azure/keyvault-secrets'
-      - '@azure/storage-blob'
-      - '@capacitor/preferences'
-      - '@deno/kv'
-      - '@netlify/blobs'
-      - '@planetscale/database'
-      - '@upstash/redis'
-      - '@vercel/blob'
-      - '@vercel/kv'
-      - aws4fetch
-      - db0
-      - ioredis
-      - uploadthing
-
-  '@pixelaw/react-dojo@0.6.21(@metamask/sdk@0.32.1(bufferutil@4.0.9)(encoding@0.1.13)(utf-8-validate@5.0.10))(@phantom/wallet-sdk@0.0.23)(@tanstack/react-query@5.68.0(react@18.3.1))(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(bufferutil@4.0.9)(encoding@0.1.13)(get-starknet-core@4.0.0)(idb-keyval@6.2.1)(open@10.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(starknet@6.23.1(encoding@0.1.13))(typescript@5.8.2)(utf-8-validate@5.0.10)(zod@3.24.2)':
-    dependencies:
-      '@cartridge/connector': 0.7.8(@metamask/sdk@0.32.1(bufferutil@4.0.9)(encoding@0.1.13)(utf-8-validate@5.0.10))(@phantom/wallet-sdk@0.0.23)(@starknet-react/core@3.7.2(bufferutil@4.0.9)(get-starknet-core@4.0.0)(react@18.3.1)(starknet@6.23.1(encoding@0.1.13))(typescript@5.8.2)(utf-8-validate@5.0.10))(open@10.1.0)(starknet@6.23.1(encoding@0.1.13))(starknetkit@2.10.4(bufferutil@4.0.9)(starknet@6.23.1(encoding@0.1.13))(typescript@5.8.2)(utf-8-validate@5.0.10)(zod@3.24.2))
-      '@pixelaw/core-dojo': 0.6.21(@metamask/sdk@0.32.1(bufferutil@4.0.9)(encoding@0.1.13)(utf-8-validate@5.0.10))(@phantom/wallet-sdk@0.0.23)(@tanstack/react-query@5.68.0(react@18.3.1))(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(bufferutil@4.0.9)(encoding@0.1.13)(get-starknet-core@4.0.0)(idb-keyval@6.2.1)(open@10.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(starknetkit@2.10.4(bufferutil@4.0.9)(starknet@6.23.1(encoding@0.1.13))(typescript@5.8.2)(utf-8-validate@5.0.10)(zod@3.24.2))(typescript@5.8.2)(utf-8-validate@5.0.10)(zod@3.24.2)
-      '@pixelaw/react': 0.6.21(idb-keyval@6.2.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@starknet-react/chains': 3.1.2
-      '@starknet-react/core': 3.7.2(bufferutil@4.0.9)(get-starknet-core@4.0.0)(react@18.3.1)(starknet@6.23.1(encoding@0.1.13))(typescript@5.8.2)(utf-8-validate@5.0.10)
-      postcss: 8.5.3
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
-      starknet: 6.23.1(encoding@0.1.13)
-      starknetkit: 2.10.4(bufferutil@4.0.9)(starknet@6.23.1(encoding@0.1.13))(typescript@5.8.2)(utf-8-validate@5.0.10)(zod@3.24.2)
-    transitivePeerDependencies:
-      - '@azure/app-configuration'
-      - '@azure/cosmos'
-      - '@azure/data-tables'
-      - '@azure/identity'
-      - '@azure/keyvault-secrets'
-      - '@azure/storage-blob'
-      - '@capacitor/preferences'
-      - '@deno/kv'
-      - '@metamask/sdk'
-      - '@netlify/blobs'
-      - '@phantom/wallet-sdk'
-      - '@planetscale/database'
-      - '@react-native-async-storage/async-storage'
-      - '@tanstack/react-query'
-      - '@types/react'
-      - '@types/react-dom'
-      - '@upstash/redis'
-      - '@vercel/blob'
-      - '@vercel/kv'
-      - aws4fetch
-      - bufferutil
-      - db0
-      - encoding
-      - get-starknet-core
-      - idb-keyval
-      - ioredis
-      - open
-      - typescript
-      - uploadthing
-      - utf-8-validate
-      - zod
-
-  '@pixelaw/react@0.6.21(idb-keyval@6.2.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
-    dependencies:
-      '@pixelaw/core': 0.6.21
-      emoji-picker-react: 4.12.2(react@18.3.1)
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
-      unstorage: 1.15.0(idb-keyval@6.2.1)
-    transitivePeerDependencies:
-      - '@azure/app-configuration'
-      - '@azure/cosmos'
-      - '@azure/data-tables'
-      - '@azure/identity'
-      - '@azure/keyvault-secrets'
-      - '@azure/storage-blob'
-      - '@capacitor/preferences'
-      - '@deno/kv'
-      - '@netlify/blobs'
-      - '@planetscale/database'
-      - '@upstash/redis'
-      - '@vercel/blob'
-      - '@vercel/kv'
-      - aws4fetch
-      - db0
-      - idb-keyval
-      - ioredis
-      - uploadthing
 
   '@pkgjs/parseargs@0.11.0':
     optional: true
