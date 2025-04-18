@@ -17,19 +17,29 @@ const AppContent = () => {
 	if (coreStatus === "error") {
 		return <div className="error-message">Error occurred, check the logs</div>;
 	}
-
-	return (
-		<BrowserRouter>
-			{coreStatus === "ready" ? (
+	if (coreStatus === "initAccount") {
+		return (
+			<BrowserRouter>
+				<StarknetChainProvider>
+					<div className="loading-message">
+						Pls wait 🧘 : Initializing account
+					</div>
+				</StarknetChainProvider>
+			</BrowserRouter>
+		);
+	}
+	if (coreStatus === "ready" || coreStatus === "readyWithoutWallet") {
+		return (
+			<BrowserRouter>
 				<StarknetChainProvider>
 					{" "}
 					<Main />
 				</StarknetChainProvider>
-			) : (
-				<div className="loading-message">Loading, pls wait 🧘</div>
-			)}
-		</BrowserRouter>
-	);
+			</BrowserRouter>
+		);
+	}
+
+	return <div className="loading-message">Pls wait 🧘 : Loading</div>;
 };
 
 const App = () => {

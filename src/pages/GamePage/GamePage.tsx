@@ -61,7 +61,7 @@ const GamePage: React.FC = () => {
 	// Handle viewport events
 	useEffect(() => {
 		const handleCellClick = async (cell: Coordinate) => {
-			if (getZoomLevel(pixelawCore.getZoom()) === "far") {
+			if (getZoomLevel(zoom) === "far") {
 				console.warn("not handling cell click if zoomed out far");
 				return;
 			}
@@ -111,10 +111,10 @@ const GamePage: React.FC = () => {
 			pixelawCore.events.off("error", handleError);
 			pixelawCore.events.off("notification", handleNotification);
 		};
-	}, [pixelawCore]);
+	}, [pixelawCore, zoom]);
 
 	useEffect(() => {
-		if (coreStatus !== "ready") return;
+		if (!coreStatus.startsWith("ready")) return;
 
 		renderer.setContainer(rendererContainerRef.current!);
 	}, [coreStatus, renderer]);
