@@ -87,7 +87,7 @@ const GamePage: React.FC = () => {
 		};
 
 		const handleError = (error: SimplePixelError) => {
-			console.log("handleError", error);
+			console.log("handleError", JSON.stringify(error));
 			if (error.coordinate) {
 				pixelawCore.viewPort.addGlow(error.coordinate, 2000, "#FF0000", 10, 50);
 			}
@@ -127,7 +127,7 @@ const GamePage: React.FC = () => {
 			/>
 
 			<div
-				className={styles.colorpicker}
+				className={styles.colorPicker}
 				style={{ bottom: zoombasedAdjustment }}
 			>
 				<SimpleColorPicker color={color} onColorSelect={setColor} />
