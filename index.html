@@ -12,10 +12,21 @@
 <body>
 
 <div id="root"></div>
-<!--<script>-->
-<!--    globalThis.import_meta_env = JSON.parse('"import_meta_env_placeholder"');-->
-<!--</script>-->
+<script>
+    // globalThis.import_meta_env = JSON.parse('"import_meta_env_placeholder"');
+
+    // FIX: https://stackoverflow.com/questions/61855027/prevent-text-selection-on-tap-and-hold-on-ios-13-mobile-safari
+    const touchHandler = (ev) => {
+        console.log("handling", ev.type)
+        ev.preventDefault() // Prevent text selection
+    }
+    // document.addEventListener('touchstart', touchHandler, {passive:false})
+    // document.addEventListener('touchmove', touchHandler, {passive:false})
+    // document.addEventListener('touchend', touchHandler, {passive:false})
+    // document.addEventListener('touchcancel', touchHandler, {passive:false})
+</script>
 <script src="/src/lib/remotelog.js" type="module"></script>
+
 
 
 <script src="/src/index.tsx" type="module"></script>

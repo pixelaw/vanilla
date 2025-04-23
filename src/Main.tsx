@@ -1,4 +1,3 @@
-import MenuBar from "@/components/MenuBar/MenuBar.tsx"
 import GamePage from "@/pages/GamePage/GamePage.tsx"
 import SettingsPage from "@/pages/SettingsPage.tsx"
 import {WalletSelectorPage} from "@/pages/WalletSelectorPage.tsx";
@@ -12,7 +11,7 @@ function Main() {
 
     return (
         <div className={styles.container}>
-            <MenuBar />
+            {/*<MenuBar />*/}
 
             <div className={styles.main}>
                 <Routes>

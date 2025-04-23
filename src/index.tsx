@@ -11,7 +11,7 @@ import {StarknetChainProvider} from "@pixelaw/react-dojo";
 import type {WorldsRegistry} from "@pixelaw/core";
 import worldsRegistry from "@/config/worlds.json";
 
-const AppContent = () => {
+const AppContent = React.memo(() => {
 	const { coreStatus } = usePixelawProvider();
 
 	if (coreStatus === "error") {
@@ -29,6 +29,8 @@ const AppContent = () => {
 		);
 	}
 	if (coreStatus === "ready" || coreStatus === "readyWithoutWallet") {
+        // TODO This renders many many times, due to "center" changes in GamePage
+
 		return (
 			<BrowserRouter>
 				<StarknetChainProvider>
@@ -40,7 +42,7 @@ const AppContent = () => {
 	}
 
 	return <div className="loading-message">Pls wait 🧘 : Loading</div>;
-};
+});
 
 const App = () => {
 	return (
