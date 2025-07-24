@@ -28,7 +28,12 @@ const GamePage: React.FC = () => {
     try {
         // TODO: Ideally pixelawCore doesnt need to be exposed here, and we have a setter for renderer
         const { pixelawCore, coreStatus, world, app, color, center, zoom, setColor, setApp } = usePixelawProvider()
-        const [selectedApp, setSelectedApp] = useState<string>("snake")
+        const [selectedApp, setSelectedAppState] = useState<string>("snake")
+        
+        const setSelectedApp = (appName: string) => {
+            setSelectedAppState(appName)
+            setApp(appName)
+        }
         const appIcon = !app ? "" : pixelawCore.appStore.getByName(selectedApp)!.icon
 
         const { viewPort: renderer } = pixelawCore
