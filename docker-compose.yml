@@ -1,14 +1,25 @@
 services:
   pixelaw-core:
-    image: ghcr.io/pixelaw/core:0.3.27
+    image: "ghcr.io/pixelaw/core:0.7.8"
     platform: linux/x86_64
     container_name: pixelaw-core
     environment:
       - DISABLE_FEE=true
       - DISABLE_VALIDATE=true
       - RUST_LOG=info,hyper=off
-      - WORLD_ADDRESS=0x00a712727a27defbf77122fae30c91e90ec62bba8f09a2a396eddc29b768386b
       - INVOKE_MAX_STEPS=4000000
+      - RPC_URL=http://127.0.0.1:5050
+      - TORII_URL=http://127.0.0.1:8080
+      - RELAY_URL=http://127.0.0.1:8080
+      - PUBLIC_SERVER_URL=http://127.0.0.1:3000
+      - PUBLIC_RPC_URL=http://127.0.0.1:5050
+      - PUBLIC_TORII_URL=http://127.0.0.1:8080
+      - PUBLIC_RELAY_URL=http://127.0.0.1:8080
+      - WORLD_ADDRESS=0x06187e6ecbeba16f0ca4cbf17ea3887ff4abad114d0e345b5d6987edaf2009f4
+      - WORLD_ID=local
+      - SERVER_PORT=3000
+      - WORLDS_URL=https://raw.githubusercontent.com/pixelaw/config/refs/heads/main/web.config.json
+      - PREVENT_EXIT=1
     ports:
       - "127.0.0.1:5050:5050"
       - "127.0.0.1:3000:3000"
@@ -20,7 +31,7 @@ services:
     volumes:
       - storage:/pixelaw/storage
       - log:/pixelaw/log
-
+    # command: ["/bin/sh", "-c", "/pixelaw/scripts/startup.sh"]
 networks:
   pixelaw:
     driver: bridge

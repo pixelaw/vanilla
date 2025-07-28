@@ -11,6 +11,11 @@ import { PixelawProvider, usePixelawProvider } from "@pixelaw/react"
 import { StarknetChainProvider } from "@pixelaw/react-dojo"
 import { BrowserRouter } from "react-router-dom"
 
+// Import test helpers for development
+if (process.env.NODE_ENV === 'development') {
+    import("@/utils/testHelpers.ts");
+}
+
 const AppContent = React.memo(() => {
     const { coreStatus } = usePixelawProvider()
 
