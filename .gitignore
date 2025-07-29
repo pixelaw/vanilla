@@ -32,3 +32,4 @@ dist-ssr
 *.sln
 *.sw?
 /.run/dev.run.xml
+.mcp.json

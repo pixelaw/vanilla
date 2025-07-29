@@ -132,3 +132,45 @@ Multiple blockchain worlds are supported via `src/config/worlds.json`:
 - **Loading loadWorld**: PixeLAW core initialization
 - **core.setStatus readyWithoutWallet**: Ready for development (normal state)
 - **Connected to Ably**: Real-time service connected
+
+## PixeLAW.js Source Code Access
+
+### Location
+The pixelaw.js source code is located at: `../pixelaw.js/`
+
+This is a sibling directory to the vanilla frontend client and contains the complete TypeScript/JavaScript SDK for PixeLAW.
+
+### Structure
+```
+pixelaw.js/
+├── packages/
+│   ├── core/           # Base rendering and common functionality
+│   ├── core-dojo/      # Dojo (StarkNet) blockchain integration
+│   ├── core-mud/       # MUD blockchain integration
+│   ├── react/          # General React hooks and components
+│   ├── react-dojo/     # Dojo-specific React components
+│   └── imgtool-dojo/   # Image processing utilities
+├── examples/           # Example applications and bots
+├── apps/               # Full applications (bot-dojo)
+└── CLAUDE.md          # Development guidance for pixelaw.js
+```
+
+### Key Architecture
+- **Engine Pattern**: Abstract `Engine` interface implemented by `DojoEngine`, `MudEngine`
+- **Store Pattern**: `PixelStore`, `AppStore`, `QueueStore`, `NotificationStore`
+- **Modular Design**: Core functionality separated from blockchain-specific implementations
+- **React Integration**: Framework-specific hooks and components for easy frontend integration
+
+### Development Commands (from pixelaw.js directory)
+- `pnpm build` - Build all packages using Turbo
+- `pnpm dev` - Development mode with file watching
+- `pnpm lint` - Run Biome linter across all packages
+- `pnpm docs` - Generate TypeDoc documentation
+
+### Key Files to Reference
+- `/packages/core/src/types.ts` - Core type definitions (Pixel, App, Engine, etc.)
+- `/packages/core-dojo/src/DojoEngine.ts` - Main Dojo blockchain engine
+- `/packages/react/src/hooks/PixelawProvider.tsx` - React context provider
+- `/packages/core/src/PixelawCore.ts` - Central orchestration class
+
+Use this location when you need to examine the underlying SDK implementation, understand engine architecture, or work with the core types and interfaces.
