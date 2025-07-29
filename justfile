@@ -17,6 +17,9 @@ docker_logs:
 docker_logs_follow:
     docker-compose logs -f
 
+docker_shell:
+    docker exec -it pixelaw-core /bin/bash
+
 dev:
     #!/usr/bin/env bash
     echo "🐳 Ensuring Docker containers are running..."
