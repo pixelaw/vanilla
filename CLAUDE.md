@@ -34,6 +34,7 @@ This is a PixeLAW frontend client - a React-based application for interacting wi
 - `just docker_run` - Start Docker containers with `docker-compose up -d`
 - `just docker_logs` - View all container logs
 - `just docker_logs_follow` - Follow container logs in real-time
+- `just docker_shell` - Access the pixelaw-core container shell
 
 ## Architecture
 
