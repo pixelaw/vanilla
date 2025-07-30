@@ -1,52 +1,96 @@
-import React, { useState } from 'react';
-import { UnifiedItem, NotificationPanelProps } from './types';
-import { LatestItem } from './LatestItem';
-import { ItemsList } from './ItemsList';
-import './NotificationPanel.css';
+import React, { useState, useEffect } from "react";
+import type { UnifiedItem, NotificationPanelProps } from "./types";
+import { LatestItem } from "./LatestItem";
+import { ItemsList } from "./ItemsList";
+import { usePixelawProvider } from "@pixelaw/react";
+import type { Notification, SimplePixelError } from "@pixelaw/core";
+import "./NotificationPanel.css";
 
-// Mock data for testing
-const mockItems: UnifiedItem[] = [
-  {
-    id: 'error-1',
-    type: 'error',
-    timestamp: Date.now() - 1000 * 60 * 2, // 2 minutes ago
-    coordinate: [10, 15],
-    message: 'Transaction failed: Insufficient gas',
-    title: 'Transaction Error'
-  },
-  {
-    id: 'notification-1', 
-    type: 'notification',
-    timestamp: Date.now() - 1000 * 60 * 5, // 5 minutes ago
-    coordinate: [25, 30],
-    message: 'Pixel placed successfully',
-    title: 'Snake Game',
-    appName: 'Snake'
-  },
-  {
-    id: 'error-2',
-    type: 'error', 
-    timestamp: Date.now() - 1000 * 60 * 10, // 10 minutes ago
-    coordinate: null,
-    message: 'Network connection timeout',
-    title: 'Connection Error'
-  },
-  {
-    id: 'notification-2',
-    type: 'notification',
-    timestamp: Date.now() - 1000 * 60 * 15, // 15 minutes ago 
-    coordinate: [50, 45],
-    message: 'New player joined your area',
-    title: 'Paint Game',
-    appName: 'Paint'
-  }
-];
+// Helper function to convert notifications to unified items
+const notificationToUnifiedItem = (
+  notification: Notification,
+  index: number,
+): UnifiedItem => ({
+  id: `notification-${notification.timestamp}-${notification.position.x},${notification.position.y}-${index}`,
+  type: "notification",
+  timestamp: notification.timestamp,
+  coordinate: [notification.position.x, notification.position.y],
+  message: notification.text,
+  title: notification.app || "Unknown App",
+  appName: notification.app,
+});
 
-export const NotificationPanel: React.FC<NotificationPanelProps> = ({ className }) => {
+// Helper function to convert errors to unified items
+const errorToUnifiedItem = (
+  error: SimplePixelError,
+  index: number,
+): UnifiedItem => ({
+  id: `error-${error.timestamp}-${error.coordinate[0]},${error.coordinate[1]}-${index}`,
+  type: "error",
+  timestamp: error.timestamp,
+  coordinate: error.coordinate,
+  message: error.error,
+  title: "Error",
+});
+
+export const NotificationPanel: React.FC<NotificationPanelProps> = ({
+  className,
+}) => {
+  const { pixelawCore, coreStatus } = usePixelawProvider();
   const [isExpanded, setIsExpanded] = useState(false);
-  
+  const [notifications, setNotifications] = useState<Notification[]>([]);
+  const [errors, setErrors] = useState<SimplePixelError[]>([]);
+
+  // Update notifications and errors from stores
+  useEffect(() => {
+    if (!pixelawCore || !coreStatus.startsWith("ready")) return;
+
+    const updateNotifications = () => {
+      setNotifications(pixelawCore.notificationStore.getAll());
+    };
+
+    const updateErrors = () => {
+      setErrors(pixelawCore.errorStore.getErrors());
+    };
+
+    // Initial load
+    updateNotifications();
+    updateErrors();
+
+    // Subscribe to store events
+    pixelawCore.notificationStore.eventEmitter.on("added", updateNotifications);
+    pixelawCore.errorStore.eventEmitter.on("errorAdded", updateErrors);
+    pixelawCore.errorStore.eventEmitter.on("errorsCleared", updateErrors);
+
+    return () => {
+      pixelawCore.notificationStore.eventEmitter.off(
+        "added",
+        updateNotifications,
+      );
+      pixelawCore.errorStore.eventEmitter.off("errorAdded", updateErrors);
+      pixelawCore.errorStore.eventEmitter.off("errorsCleared", updateErrors);
+    };
+  }, [pixelawCore, coreStatus]);
+
+  // Convert and combine all items
+  const allItems: UnifiedItem[] = [
+    ...notifications.map((n, i) => notificationToUnifiedItem(n, i)),
+    ...errors.map((e, i) => errorToUnifiedItem(e, i)),
+  ];
+
   // Sort items by timestamp (newest first)
-  const sortedItems = mockItems.sort((a, b) => b.timestamp - a.timestamp);
+  const sortedItems = allItems.sort((a, b) => b.timestamp - a.timestamp);
+
+  // Auto-update lastEventAck if we have more than 100 items
+  useEffect(() => {
+    if (sortedItems.length > 100 && pixelawCore) {
+      const oldestVisibleTimestamp = sortedItems[99].timestamp;
+      if (oldestVisibleTimestamp > pixelawCore.lastEventAck) {
+        pixelawCore.lastEventAck = oldestVisibleTimestamp;
+      }
+    }
+  }, [sortedItems, pixelawCore]);
+
   const latestItem = sortedItems[0];
   const unreadCount = sortedItems.length;
 
@@ -55,16 +99,29 @@ export const NotificationPanel: React.FC<NotificationPanelProps> = ({ className 
   };
 
   const handleItemClick = (item: UnifiedItem) => {
-    console.log('Item clicked:', item);
-    // TODO: Implement navigation
-    if (item.coordinate) {
-      console.log(`Navigate to coordinate: ${item.coordinate[0]}, ${item.coordinate[1]}`);
+    console.log("Item clicked:", item);
+    if (item.coordinate && pixelawCore) {
+      // Navigate to coordinate and add glow effect
+      pixelawCore.viewPort.setCenter(item.coordinate);
+      pixelawCore.viewPort.addGlow(
+        item.coordinate,
+        3000,
+        item.type === "error" ? "#FF0000" : "#3b82f6",
+        10,
+        50,
+      );
     }
   };
 
   const handleClearAll = () => {
-    console.log('Clear all notifications');
-    // TODO: Implement clear functionality
+    if (pixelawCore) {
+      // Update lastEventAck to current time to hide all current events
+      pixelawCore.lastEventAck = Date.now();
+
+      // Force re-render by updating state
+      setNotifications([...pixelawCore.notificationStore.getAll()]);
+      setErrors([...pixelawCore.errorStore.getErrors()]);
+    }
   };
 
   if (!latestItem) {
@@ -72,32 +129,37 @@ export const NotificationPanel: React.FC<NotificationPanelProps> = ({ className 
   }
 
   return (
-    <div className={`notification-panel ${className || ''}`}>
+    <div className={`notification-panel ${className || ""}`}>
       {/* Collapsed State - Single Line */}
-      <div 
-        className="notification-bar" 
+      <div
+        className="notification-bar"
         onClick={handleToggleExpanded}
         role="button"
         tabIndex={0}
         onKeyDown={(e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
+          if (e.key === "Enter" || e.key === " ") {
             handleToggleExpanded();
           }
         }}
       >
         <LatestItem item={latestItem} />
-        
+
         <div className="panel-controls">
           {unreadCount > 0 && (
             <span className="unread-badge">{unreadCount}</span>
           )}
-          <svg 
-            className={`expand-icon ${isExpanded ? 'expanded' : ''}`}
-            width="16" 
-            height="16" 
+          <svg
+            className={`expand-icon ${isExpanded ? "expanded" : ""}`}
+            width="16"
+            height="16"
             viewBox="0 0 16 16"
           >
-            <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="2" fill="none" />
+            <path
+              d="M4 6l4 4 4-4"
+              stroke="currentColor"
+              strokeWidth="2"
+              fill="none"
+            />
           </svg>
         </div>
       </div>
@@ -107,18 +169,12 @@ export const NotificationPanel: React.FC<NotificationPanelProps> = ({ className 
         <div className="notification-dropdown">
           <div className="dropdown-header">
             <h3>Notifications</h3>
-            <button 
-              className="clear-all-btn"
-              onClick={handleClearAll}
-            >
+            <button className="clear-all-btn" onClick={handleClearAll}>
               Clear All
             </button>
           </div>
-          
-          <ItemsList 
-            items={sortedItems}
-            onItemClick={handleItemClick}
-          />
+
+          <ItemsList items={sortedItems} onItemClick={handleItemClick} />
         </div>
       )}
     </div>
