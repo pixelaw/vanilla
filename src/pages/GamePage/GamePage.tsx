@@ -12,6 +12,7 @@ import styles from "./GamePage.module.css"
 
 import AppPicker from "@/components/GamePage/AppPicker/AppPicker"
 import SimpleColorPicker from "@/components/GamePage/ColorPicker/SimpleColorPicker.tsx"
+import { NotificationPanel } from "@/components/NotificationPanel"
 
 // biome-ignore lint/complexity/noBannedTypes: TODO
 function debounce(func: Function, wait: number) {
@@ -168,6 +169,9 @@ const GamePage: React.FC = () => {
 
         return (
             <>
+                {/* Notification Panel - Fixed overlay at top */}
+                <NotificationPanel />
+                
                 <div ref={rendererContainerRef} style={{ width: "100%", height: "100%", touchAction: "none" }} />
 
                 {activeChooser === "color" && (
