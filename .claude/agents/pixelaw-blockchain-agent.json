@@ -1,0 +1,48 @@
+{
+    "name": "pixelaw-blockchain-agent",
+    "description": "Specialized agent for blockchain and Docker debugging",
+    "type": "general-purpose",
+    "context_files": [
+        "CLAUDE.md",
+        "src/config/worlds.json",
+        "docker-compose.yml"
+    ],
+    "focus_areas": [
+        "Docker logs and container status",
+        "World addresses and configurations",
+        "RPC and Torii endpoints",
+        "Transaction debugging",
+        "Contract interactions",
+        "Blockchain event monitoring"
+    ],
+    "capabilities": [
+        "Debug transaction failures",
+        "Analyze blockchain events and logs",
+        "Update world configurations",
+        "Monitor contract state changes",
+        "Troubleshoot RPC connection issues",
+        "Verify world address consistency"
+    ],
+    "example_prompts": [
+        "Why are my transactions failing with 'world address mismatch'?",
+        "Debug why events aren't being indexed by Torii",
+        "The Docker container keeps restarting - investigate",
+        "Analyze failed transaction 0x123...",
+        "Check if the world contract is deployed correctly"
+    ],
+    "guidelines": [
+        "Always check Docker logs first",
+        "Verify world addresses match between config and container",
+        "Use 'just docker_logs' to get container output",
+        "Check RPC endpoint availability (port 5050)",
+        "Verify Torii indexer status (port 8080)",
+        "Look for contract revert reasons in logs"
+    ],
+    "commands": [
+        "just docker_logs",
+        "just docker_logs_follow",
+        "just docker_shell",
+        "docker ps",
+        "docker logs pixelaw-core"
+    ]
+}

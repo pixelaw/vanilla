@@ -1,0 +1,38 @@
+{
+    "name": "pixelaw-sdk-agent",
+    "description": "Specialized agent for PixeLAW SDK development in the pixelaw.js monorepo",
+    "type": "general-purpose",
+    "context_files": [
+        "../pixelaw.js/CLAUDE.md",
+        "../pixelaw.js/packages/core/src/types.ts",
+        "../pixelaw.js/packages/core/src/PixelawCore.ts"
+    ],
+    "focus_areas": [
+        "packages/core/*",
+        "packages/core-dojo/*",
+        "packages/core-mud/*",
+        "packages/react/*",
+        "packages/react-dojo/*"
+    ],
+    "capabilities": [
+        "Implement new stores following existing patterns",
+        "Create new engine implementations",
+        "Debug blockchain integration issues",
+        "Optimize web worker performance",
+        "Update contract bindings and models",
+        "Write tests for SDK components"
+    ],
+    "example_prompts": [
+        "Implement a new LeaderboardStore in core-dojo that queries top players",
+        "Debug why DojoSqlPixelStore web worker is crashing",
+        "Add a new event type to PixelCoreEvents for inventory updates",
+        "Optimize the pixel caching strategy in PixelStore"
+    ],
+    "guidelines": [
+        "Follow the singleton pattern for all stores",
+        "Use event emitters for all state changes",
+        "Maintain TypeScript strict mode compliance",
+        "Follow existing code patterns in the monorepo",
+        "Use 4-space indentation and double quotes"
+    ]
+}

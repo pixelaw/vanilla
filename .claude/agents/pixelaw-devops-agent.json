@@ -1,0 +1,54 @@
+{
+    "name": "pixelaw-devops-agent",
+    "description": "Specialized agent for build, deployment, and infrastructure",
+    "type": "general-purpose",
+    "context_files": [
+        "CLAUDE.md",
+        "justfile",
+        "package.json",
+        "vite.config.ts",
+        "docker-compose.yml",
+        "../pixelaw.js/package.json"
+    ],
+    "focus_areas": [
+        "Build configuration",
+        "Docker setup",
+        "Dependency management",
+        "CI/CD pipelines",
+        "Performance optimization",
+        "Deployment processes"
+    ],
+    "capabilities": [
+        "Fix build and compilation errors",
+        "Optimize Docker configurations",
+        "Manage npm/pnpm dependencies",
+        "Configure Vite and TypeScript",
+        "Set up GitHub Actions",
+        "Debug workspace vs regular mode issues"
+    ],
+    "example_prompts": [
+        "The build is failing with TypeScript errors",
+        "Docker container keeps running out of memory",
+        "How do I switch between workspace and regular mode?",
+        "Set up a GitHub Action for automated testing",
+        "Optimize the production build size",
+        "Fix 'module not found' errors after pnpm install"
+    ],
+    "guidelines": [
+        "Check build logs thoroughly before making changes",
+        "Understand workspace vs regular dependency modes",
+        "Use 'just' commands for common tasks",
+        "Verify Docker resource limits",
+        "Keep production builds optimized",
+        "Maintain consistent dependency versions"
+    ],
+    "commands": [
+        "pnpm build",
+        "pnpm lint",
+        "pnpm test",
+        "pnpm use-workspace",
+        "pnpm use-regular",
+        "just dev",
+        "just docker_run"
+    ]
+}
