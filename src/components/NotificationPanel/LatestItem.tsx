@@ -19,54 +19,46 @@ const formatTimestamp = (timestamp: number): string => {
 };
 
 export const LatestItem: React.FC<LatestItemProps> = ({ item }) => {
-  const getIcon = () => {
-    if (item.type === 'error') {
-      return (
-        <svg className="item-icon error-icon" width="16" height="16" viewBox="0 0 16 16">
-          <circle cx="8" cy="8" r="7" fill="#ef4444" />
-          <path d="M8 4v4M8 10h.01" stroke="white" strokeWidth="2" strokeLinecap="round" />
-        </svg>
-      );
-    } else {
-      return (
-        <svg className="item-icon notification-icon" width="16" height="16" viewBox="0 0 16 16">
-          <circle cx="8" cy="8" r="7" fill="#3b82f6" />
-          <path d="M8 4v4l2 2" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      );
-    }
-  };
-
   const truncateMessage = (message: string, maxLength: number = 60) => {
     if (message.length <= maxLength) return message;
     return message.substring(0, maxLength) + '...';
   };
 
+  const handleCoordinateClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (item.coordinate) {
+      // This will be handled by the parent component's onItemClick
+      const event = new CustomEvent('coordinateClick', { detail: item });
+      e.currentTarget.dispatchEvent(event);
+    }
+  };
+
   return (
     <div className="latest-item">
-      {getIcon()}
+      <span className="timestamp">{formatTimestamp(item.timestamp)}</span>
       
       <div className="item-content">
-        <div className="item-header">
-          <span className="item-title">
-            {item.title || (item.type === 'error' ? 'Error' : 'Notification')}
-          </span>
-          {item.appName && (
-            <span className="app-name">• {item.appName}</span>
+        <div className="item-single-line">
+          {item.type === 'error' ? (
+            <span className="app-name">Error: </span>
+          ) : (
+            item.appName && <span className="app-name">{item.appName}: </span>
           )}
-          <span className="timestamp">{formatTimestamp(item.timestamp)}</span>
+          <span className="item-message">{truncateMessage(item.message)}</span>
         </div>
-        
-        <div className="item-message">
-          {truncateMessage(item.message)}
-        </div>
-        
-        {item.coordinate && (
-          <div className="coordinate-badge">
-            ({item.coordinate[0]}, {item.coordinate[1]})
-          </div>
-        )}
       </div>
+      
+      {item.coordinate && (
+        <span 
+          className="coordinate-crosshair" 
+          onClick={handleCoordinateClick}
+          role="button"
+          tabIndex={0}
+          title={`Go to (${item.coordinate[0]}, ${item.coordinate[1]})`}
+        >
+          ⌖
+        </span>
+      )}
     </div>
   );
 };

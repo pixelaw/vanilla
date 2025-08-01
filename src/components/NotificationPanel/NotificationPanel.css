@@ -8,7 +8,8 @@
   background-color: white;
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   color: #1f2937;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   width: auto;
@@ -47,6 +48,13 @@
   gap: 12px;
   flex: 1;
   min-width: 0;
+}
+
+.latest-item .timestamp {
+  color: #db2777;
+  font-size: 12px;
+  font-weight: 500;
+  flex-shrink: 0;
 }
 
 .item-icon {
@@ -112,6 +120,43 @@
   border: 1px solid rgba(229, 231, 235, 1);
 }
 
+.coordinate-crosshair {
+  font-size: 32px;
+  cursor: pointer;
+  color: #3b82f6;
+  margin: 0 4px;
+  padding: 2px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.coordinate-crosshair:hover {
+  background: rgba(59, 130, 246, 0.1);
+  color: #1d4ed8;
+  transform: scale(1.1);
+}
+
+.item-single-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  flex-wrap: wrap;
+}
+
+.item-single-line .app-name {
+  font-weight: 600;
+  color: #831843;
+}
+
+.item-single-line .item-message {
+  color: #9f1239;
+  flex: 1;
+  min-width: 0;
+}
+
+
 /* Panel Controls */
 .panel-controls {
   display: flex;
@@ -131,6 +176,29 @@
   text-align: center;
 }
 
+.clear-btn {
+  background: none;
+  border: 1px solid #d1d5db;
+  color: #6b7280;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  padding: 0;
+  line-height: 1;
+}
+
+.clear-btn:hover {
+  background: #f3f4f6;
+  color: #111827;
+  border-color: #9ca3af;
+}
+
 .expand-icon {
   transition: transform 0.2s ease;
   color: #6b7280;
@@ -146,8 +214,6 @@
   background: white;
   max-height: 400px;
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
 }
@@ -192,11 +258,18 @@
 
 .item-row {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 12px;
   padding: 12px 20px;
   border-bottom: 1px solid rgba(243, 244, 246, 1);
   transition: background-color 0.2s ease;
+}
+
+.item-row .timestamp {
+  color: #db2777;
+  font-size: 12px;
+  font-weight: 500;
+  flex-shrink: 0;
 }
 
 .item-row:hover {
@@ -272,20 +345,20 @@
     left: 1rem;
     transform: none;
   }
-  
+
   .notification-bar {
     padding: 10px 16px;
   }
-  
+
   .item-header {
     flex-wrap: wrap;
   }
-  
+
   .timestamp {
     order: 1;
     margin-left: 0;
   }
-  
+
   .app-name {
     order: 2;
   }

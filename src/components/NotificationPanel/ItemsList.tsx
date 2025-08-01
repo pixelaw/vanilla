@@ -23,59 +23,39 @@ const ItemRow: React.FC<{ item: UnifiedItem; onItemClick: (item: UnifiedItem) =>
   item, 
   onItemClick 
 }) => {
-  const getIcon = () => {
-    if (item.type === 'error') {
-      return (
-        <svg className="item-icon error-icon" width="20" height="20" viewBox="0 0 16 16">
-          <circle cx="8" cy="8" r="7" fill="#ef4444" />
-          <path d="M8 4v4M8 10h.01" stroke="white" strokeWidth="2" strokeLinecap="round" />
-        </svg>
-      );
-    } else {
-      return (
-        <svg className="item-icon notification-icon" width="20" height="20" viewBox="0 0 16 16">
-          <circle cx="8" cy="8" r="7" fill="#3b82f6" />
-          <path d="M8 4v4l2 2" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      );
+  const handleCoordinateClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (item.coordinate) {
+      onItemClick(item);
     }
   };
 
   return (
-    <div 
-      className={`item-row ${item.type} ${item.coordinate ? 'clickable' : ''}`}
-      onClick={() => onItemClick(item)}
-      role="button"
-      tabIndex={0}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          onItemClick(item);
-        }
-      }}
-    >
-      {getIcon()}
+    <div className={`item-row ${item.type}`}>
+      <span className="timestamp">{formatTimestamp(item.timestamp)}</span>
       
       <div className="item-details">
-        <div className="item-header">
-          <span className="item-title">
-            {item.title || (item.type === 'error' ? 'Error' : 'Notification')}
-          </span>
-          {item.appName && (
-            <span className="app-name">• {item.appName}</span>
+        <div className="item-single-line">
+          {item.type === 'error' ? (
+            <span className="app-name">Error: </span>
+          ) : (
+            item.appName && <span className="app-name">{item.appName}: </span>
           )}
-          <span className="timestamp">{formatTimestamp(item.timestamp)}</span>
+          <span className="item-message">{item.message}</span>
         </div>
-        
-        <div className="item-message">
-          {item.message}
-        </div>
-        
-        {item.coordinate && (
-          <div className="coordinate-badge">
-            Click to navigate to ({item.coordinate[0]}, {item.coordinate[1]})
-          </div>
-        )}
       </div>
+      
+      {item.coordinate && (
+        <span 
+          className="coordinate-crosshair" 
+          onClick={handleCoordinateClick}
+          role="button"
+          tabIndex={0}
+          title={`Go to (${item.coordinate[0]}, ${item.coordinate[1]})`}
+        >
+          ⌖
+        </span>
+      )}
     </div>
   );
 };

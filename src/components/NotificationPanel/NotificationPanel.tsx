@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import type { UnifiedItem, NotificationPanelProps } from "./types";
 import { LatestItem } from "./LatestItem";
 import { ItemsList } from "./ItemsList";
@@ -16,7 +16,7 @@ const notificationToUnifiedItem = (
   timestamp: notification.timestamp,
   coordinate: [notification.position.x, notification.position.y],
   message: notification.text,
-  title: notification.app || "Unknown App",
+  title: "Notification",
   appName: notification.app,
 });
 
@@ -40,6 +40,7 @@ export const NotificationPanel: React.FC<NotificationPanelProps> = ({
   const [isExpanded, setIsExpanded] = useState(false);
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const [errors, setErrors] = useState<SimplePixelError[]>([]);
+  const notificationBarRef = useRef<HTMLDivElement>(null);
 
   // Update notifications and errors from stores
   useEffect(() => {
@@ -91,6 +92,23 @@ export const NotificationPanel: React.FC<NotificationPanelProps> = ({
     }
   }, [sortedItems, pixelawCore]);
 
+  // Handle coordinate clicks from crosshair
+  useEffect(() => {
+    const handleCoordinateClick = (e: any) => {
+      if (e.detail) {
+        handleItemClick(e.detail);
+      }
+    };
+
+    const element = notificationBarRef.current;
+    if (element) {
+      element.addEventListener('coordinateClick', handleCoordinateClick);
+      return () => {
+        element.removeEventListener('coordinateClick', handleCoordinateClick);
+      };
+    }
+  }, []);
+
   const latestItem = sortedItems[0];
   const unreadCount = sortedItems.length;
 
@@ -132,6 +150,7 @@ export const NotificationPanel: React.FC<NotificationPanelProps> = ({
     <div className={`notification-panel ${className || ""}`}>
       {/* Collapsed State - Single Line */}
       <div
+        ref={notificationBarRef}
         className="notification-bar"
         onClick={handleToggleExpanded}
         role="button"
@@ -146,34 +165,26 @@ export const NotificationPanel: React.FC<NotificationPanelProps> = ({
 
         <div className="panel-controls">
           {unreadCount > 0 && (
-            <span className="unread-badge">{unreadCount}</span>
+            <>
+              <span className="unread-badge">{unreadCount}</span>
+              <button 
+                className="clear-btn" 
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleClearAll();
+                }}
+                title="Clear all notifications"
+              >
+                🗑
+              </button>
+            </>
           )}
-          <svg
-            className={`expand-icon ${isExpanded ? "expanded" : ""}`}
-            width="16"
-            height="16"
-            viewBox="0 0 16 16"
-          >
-            <path
-              d="M4 6l4 4 4-4"
-              stroke="currentColor"
-              strokeWidth="2"
-              fill="none"
-            />
-          </svg>
         </div>
       </div>
 
       {/* Expanded State - Scrollable List */}
       {isExpanded && (
         <div className="notification-dropdown">
-          <div className="dropdown-header">
-            <h3>Notifications</h3>
-            <button className="clear-all-btn" onClick={handleClearAll}>
-              Clear All
-            </button>
-          </div>
-
           <ItemsList items={sortedItems} onItemClick={handleItemClick} />
         </div>
       )}
