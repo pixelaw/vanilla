@@ -7,7 +7,7 @@
   "source": "src/index.ts",
   "main": "dist/index.js",
   "author": "thiscaspar",
-  "packageManager": "pnpm@10.5.2",
+  "packageManager": "pnpm@10.14.0",
   "scripts": {
     "use-workspace": "node scripts/switchDependencies.js --workspace && pnpm install && pnpm build",
     "use-regular": "node scripts/switchDependencies.js && pnpm install && pnpm upgrade_pixelaw && pnpm build",
@@ -25,11 +25,11 @@
     "check": "biome check --apply ."
   },
   "dependencies": {
-    "@pixelaw/core": "workspace:*",
-    "@pixelaw/core-dojo": "workspace:*",
-    "@pixelaw/core-mud": "workspace:*",
-    "@pixelaw/react": "workspace:*",
-    "@pixelaw/react-dojo": "workspace:*",
+    "@pixelaw/core": "^0.6.24",
+    "@pixelaw/core-dojo": "^0.6.24",
+    "@pixelaw/core-mud": "^0.6.24",
+    "@pixelaw/react": "^0.6.24",
+    "@pixelaw/react-dojo": "^0.6.24",
     "@uiw/react-color-sketch": "^2.7.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
