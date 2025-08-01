@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import type { UnifiedItem, NotificationPanelProps } from "./types";
 import { LatestItem } from "./LatestItem";
 import { ItemsList } from "./ItemsList";
@@ -40,7 +40,6 @@ export const NotificationPanel: React.FC<NotificationPanelProps> = ({
   const [isExpanded, setIsExpanded] = useState(false);
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const [errors, setErrors] = useState<SimplePixelError[]>([]);
-  const notificationBarRef = useRef<HTMLDivElement>(null);
 
   // Update notifications and errors from stores
   useEffect(() => {
@@ -79,8 +78,13 @@ export const NotificationPanel: React.FC<NotificationPanelProps> = ({
     ...errors.map((e, i) => errorToUnifiedItem(e, i)),
   ];
 
+  // Filter items based on lastEventAck
+  const filteredItems = pixelawCore 
+    ? allItems.filter(item => item.timestamp > pixelawCore.lastEventAck)
+    : allItems;
+
   // Sort items by timestamp (newest first)
-  const sortedItems = allItems.sort((a, b) => b.timestamp - a.timestamp);
+  const sortedItems = filteredItems.sort((a, b) => b.timestamp - a.timestamp);
 
   // Auto-update lastEventAck if we have more than 100 items
   useEffect(() => {
@@ -92,22 +96,6 @@ export const NotificationPanel: React.FC<NotificationPanelProps> = ({
     }
   }, [sortedItems, pixelawCore]);
 
-  // Handle coordinate clicks from crosshair
-  useEffect(() => {
-    const handleCoordinateClick = (e: any) => {
-      if (e.detail) {
-        handleItemClick(e.detail);
-      }
-    };
-
-    const element = notificationBarRef.current;
-    if (element) {
-      element.addEventListener('coordinateClick', handleCoordinateClick);
-      return () => {
-        element.removeEventListener('coordinateClick', handleCoordinateClick);
-      };
-    }
-  }, []);
 
   const latestItem = sortedItems[0];
   const unreadCount = sortedItems.length;
@@ -155,7 +143,6 @@ export const NotificationPanel: React.FC<NotificationPanelProps> = ({
     <div className={`notification-panel ${className || ""}`}>
       {/* Collapsed State - Single Line */}
       <div
-        ref={notificationBarRef}
         className="notification-bar"
         onClick={handleToggleExpanded}
         role="button"
@@ -166,7 +153,7 @@ export const NotificationPanel: React.FC<NotificationPanelProps> = ({
           }
         }}
       >
-        <LatestItem item={latestItem} />
+        <LatestItem item={latestItem} onItemClick={handleItemClick} />
 
         <div className="panel-controls">
           {unreadCount > 1 && (

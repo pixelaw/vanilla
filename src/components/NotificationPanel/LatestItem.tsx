@@ -3,6 +3,7 @@ import { UnifiedItem } from './types';
 
 interface LatestItemProps {
   item: UnifiedItem;
+  onItemClick?: (item: UnifiedItem) => void;
 }
 
 const formatTimestamp = (timestamp: number): string => {
@@ -18,7 +19,7 @@ const formatTimestamp = (timestamp: number): string => {
   return `${days}d ago`;
 };
 
-export const LatestItem: React.FC<LatestItemProps> = ({ item }) => {
+export const LatestItem: React.FC<LatestItemProps> = ({ item, onItemClick }) => {
   const truncateMessage = (message: string, maxLength: number = 60) => {
     if (message.length <= maxLength) return message;
     return message.substring(0, maxLength) + '...';
@@ -26,10 +27,8 @@ export const LatestItem: React.FC<LatestItemProps> = ({ item }) => {
 
   const handleCoordinateClick = (e: React.MouseEvent) => {
     e.stopPropagation();
-    if (item.coordinate) {
-      // This will be handled by the parent component's onItemClick
-      const event = new CustomEvent('coordinateClick', { detail: item });
-      e.currentTarget.dispatchEvent(event);
+    if (item.coordinate && onItemClick) {
+      onItemClick(item);
     }
   };
 
