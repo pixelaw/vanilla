@@ -113,7 +113,9 @@ export const NotificationPanel: React.FC<NotificationPanelProps> = ({
   const unreadCount = sortedItems.length;
 
   const handleToggleExpanded = () => {
-    setIsExpanded(!isExpanded);
+    if (unreadCount > 1) {
+      setIsExpanded(!isExpanded);
+    }
   };
 
   const handleItemClick = (item: UnifiedItem) => {
@@ -133,12 +135,15 @@ export const NotificationPanel: React.FC<NotificationPanelProps> = ({
 
   const handleClearAll = () => {
     if (pixelawCore) {
-      // Update lastEventAck to current time to hide all current events
+      // Clear errors from the store (this method exists)
+      pixelawCore.errorStore.clearErrors();
+
+      // For notifications, update lastEventAck to current time to hide all current events
       pixelawCore.lastEventAck = Date.now();
 
-      // Force re-render by updating state
-      setNotifications([...pixelawCore.notificationStore.getAll()]);
-      setErrors([...pixelawCore.errorStore.getErrors()]);
+      // Update local state
+      setNotifications(pixelawCore.notificationStore.getAll());
+      setErrors([]);
     }
   };
 
@@ -164,7 +169,7 @@ export const NotificationPanel: React.FC<NotificationPanelProps> = ({
         <LatestItem item={latestItem} />
 
         <div className="panel-controls">
-          {unreadCount > 0 && (
+          {unreadCount > 1 && (
             <>
               <span className="unread-badge">{unreadCount}</span>
               <button 
@@ -183,9 +188,9 @@ export const NotificationPanel: React.FC<NotificationPanelProps> = ({
       </div>
 
       {/* Expanded State - Scrollable List */}
-      {isExpanded && (
+      {isExpanded && unreadCount > 1 && (
         <div className="notification-dropdown">
-          <ItemsList items={sortedItems} onItemClick={handleItemClick} />
+          <ItemsList items={sortedItems.slice(1)} onItemClick={handleItemClick} />
         </div>
       )}
     </div>
