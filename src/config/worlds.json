@@ -81,7 +81,6 @@
       "rpcUrl": "https://api.cartridge.gg/x/starknet/sepolia",
       "toriiUrl": "https://sepolia.pixelaw.xyz/torii",
       "relayUrl": "/dns4/sepolia.pixelaw.xyz/tcp/443/x-parity-wss/%2Ftorii_ws",
-
       "feeTokenAddress": "0x49d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7",
       "wallets": {
         "controller": {
