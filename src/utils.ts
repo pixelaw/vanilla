@@ -17,6 +17,15 @@ export const numberToHexRGB = (num: number) => {
 }
 
 export function getWorldForUrl(config: WorldsRegistry, url: string, defaultWorld: string): string {
+    // First check if world is specified in query parameters
+    const queryParams = new URLSearchParams(window.location.search)
+    const worldParam = queryParams.get("world")
+    
+    if (worldParam && config[worldParam]) {
+        return worldParam
+    }
+    
+    // Otherwise, match by URL
     for (const worldName in config) {
         // @ts-ignore TODO
         if (config[worldName].config.serverUrl.startsWith(url)) {
